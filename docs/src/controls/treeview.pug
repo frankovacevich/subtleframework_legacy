@@ -1,0 +1,127 @@
+h3#treeview Tree View
+
+p
+    | Use
+    code Subtle.TreeView(object, nodes, params)
+    |  to display a tree view
+
+p.
+    The nodes argument is a list with all the nodes in the tree (see the example).
+
+//
+h4 Example
+
+div#treeview_div(style="width:100%;")
+
+script.
+    var nodes = [
+        { path: 'A/B/X' },
+        { path: 'A/B/Y' },
+        { path: 'A/C/X' },
+        { path: 'A/C/Z' },
+        { path: 'A/W' },
+    ];
+    var treeview = new Subtle.TreeView("treeview_div", nodes, {
+        show_arrows: true,
+        show_checkboxes: true
+    })
+
+
+pre
+    code.block.javascript.
+        var nodes = [
+            { path: 'A/B/X' },
+            { path: 'A/B/Y' },
+            { path: 'A/C/X' },
+            { path: 'A/C/Z' },
+            { path: 'A/W' },
+        ];
+        var treeview = new Subtle.TreeView("treeview_div", nodes, {show_arrows: true, show_checkboxes: true})
+//
+h4 Params
+
+table.params-table
+    tr
+        td param
+        td type
+        td default
+        td description
+    tr
+        td padding
+        td Number
+        td 5
+        td Item padding (in pixels)
+    tr
+        td indentation
+        td Number
+        td 25
+        td Indent (in pixels) for sub levels
+    tr
+        td path_separator
+        td String
+        td "/"
+        td Path separator for the nodes
+    tr
+        td show_checkboxes
+        td Boolean
+        td true
+        td Show checkboxes on the tree end nodes (requires bootstrap)
+    tr
+        td show_arrows
+        td Boolean
+        td false
+        td Show arrows for open/closed nodes
+    tr
+        td highlight_on_select
+        td Boolean
+        td true
+        td Highlight nodes when selected
+    tr
+        td auto_sort
+        td Boolean
+        td false
+        td Sort nodes alphabetically
+    tr
+        td on_select
+        td Function
+        td function(){}
+        td Function called when the current node changes
+    tr
+        td on_checkbox_changed
+        td Function
+        td function(){}
+        td Function called when a node is checked / unchecked
+
+
+//
+h4 Update
+
+p.
+    The path of the current node is stored in <code>treeview.current_node</code>
+
+p.
+    To get the checkbox states of all nodes, check <code>treeview.nodes_checkbox_state</code>
+
+p.
+    Additionally, the following methods are available:
+
+p.
+    <code>treeview.expand_all()</code>
+
+p.
+    <code>treeview.collapse_all()</code>
+
+p.
+    <code>treeview.search(text) // filter the nodes by text</code>
+
+p.
+    For each row you insert, you need to specify a row id. You you also pass an empty string ("") as id
+    and the data will be assigned an auto id.
+
+p.
+    The data argument on the update function is a dict {column: value}, where column is the name of the
+    column as defined by the headers (Table.params.headers)
+
+p.
+    If you want to change the nodes of the tree, you can edit the <code>treeview.nodes</code>
+    object and then call the <code>treeview.draw()</code> method.

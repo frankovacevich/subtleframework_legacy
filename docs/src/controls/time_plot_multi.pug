@@ -1,0 +1,85 @@
+h3#multi_time_plot MultiTimePlot
+
+p 
+    | Use 
+    code Subtle.MultiTimePlot(object, params)
+    |  to display small time plot with multiple series
+
+//
+h4 Example
+
+div.h_layout(style="height:200px")
+    div#multitimeplot(style="max-width:500px")
+
+script.
+    var multitimeplot = new Subtle.MultiTimePlot("multitimeplot", {limit_high:0.8, limit_low:0.2, show_labels:true,  shade_limits: true, y_min: 0, y_max: 1, right_offset: 0} );
+    var mt = 0;
+    window.setInterval(function(){
+        multitimeplot.update({
+            "A": Math.sin(mt*0.1)*0.2+0.5,
+            "B": Math.sin(mt*0.1+2.1)*0.2+0.5,
+            "C": Math.sin(mt*0.1+4.2)*0.2+0.5,
+        });
+        mt += 1;
+    }, 50);
+    
+    
+pre 
+    code.block.javascript
+        | var multitimeplot = new Subtle.MultiTimePlot("multitimeplot", 
+        |     {limit_high:0.8, 
+        |     limit_low:0.2, 
+        |     show_labels:true,  
+        |     shade_limits: true, 
+        |     y_min: 0, 
+        |     y_max: 1, 
+        |     right_offset: 0}
+        | );
+        | 
+        | var mt = 0;
+        | window.setInterval(function(){
+        |     multitimeplot.update({
+        |         "A": Math.sin(mt*0.1)*0.2+0.5,
+        |         "B": Math.sin(mt*0.1+2.1)*0.2+0.5,
+        |         "C": Math.sin(mt*0.1+4.2)*0.2+0.5,
+        |     });
+        |     mt += 1;
+        | }, 50);
+
+//
+h4 Params
+
+p The MultiTimePlot inherits all params from TimePlot, with the following differences:
+
+table.params-table
+    tr
+        td param
+        td type
+        td default
+        td description
+    tr
+        td labels
+        td Array[String]
+        td ["A", "B", "C"]
+        td The labels for the time plot series
+    tr
+        td colors
+        td Array[String]
+        td Subtle.COLOR_PALLETES["main"]
+        td An array with the colors for each of the series of the plot
+    
+
+//
+h4 Update
+
+p.
+    Call the update method with an object {serie: value} to update the control. You do not need to
+    include all series, only the ones you want to update.
+
+code
+    | Subtle.MultiTimePlot.update({"A" : value, "B" : value, ...}, time = "")
+
+p.
+    Here the time can be specified as an ISO string (YYYY-MM-DD HH:MM:SS) or as a javascript Date
+    (the default value, an empty string, means that the value passed corresponds to the present time).
+

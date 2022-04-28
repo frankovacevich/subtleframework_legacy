@@ -1,0 +1,78 @@
+h3#scale Scale
+
+p 
+    | Use 
+    code Subtle.Scale(object, params)
+    | to display a more advanced bar, with an indicator and a range of historical values
+
+//
+h4 Example
+
+div.h_layout(style="height:150px")
+    div#scale1(style="max-width:200px")
+    div#scale2(style="max-width:200px")
+    div#scale3(style="max-width:200px")
+    div#scale4(style="max-width:200px")
+    div#scale5(style="max-width:200px")
+
+script.
+    var scale1 = new Subtle.Scale("scale1", {});
+    var scale2 = new Subtle.Scale("scale2", {vertical:true, limit_high:0.8, limit_low:0.2, ticks:[0.2, 0.5, 0.8]});
+
+    window.setInterval(function(){
+        scale1.update(Math.random()*0.25+0.5);
+        scale2.update(Math.random()*0.25+0.5);
+    }, 500);
+    
+pre 
+    code.block.javascript
+        | var scale1 = new Subtle.Scale("scale1", {});
+        | var scale2 = new Subtle.Scale("scale2", 
+        |    {vertical:true, 
+        |    limit_high:0.8, 
+        |    limit_low:0.2, 
+        |    ticks:[0.2, 0.5, 0.8]}
+        | );
+        | 
+        | window.setInterval(function(){
+        |     scale1.update(Math.random()*0.25+0.5);
+        |     scale2.update(Math.random()*0.25+0.5);
+        | }, 500); 
+
+//
+h4 Params
+
+p The historic gauge is derived from the normal gauge, and thus has all it's params, with differences on the following:
+
+table.params-table
+    tr
+        td param
+        td type
+        td default
+        td description
+    tr
+        td inner_padding
+        td Number
+        td 3
+        td Makes the width of the gauge's bar thinner.
+    tr
+        td history_length
+        td Number
+        td 3600
+        td Determines for how long (in seconds) the gauge stores the values to display the range.
+    
+
+//
+h4 Update
+
+p.
+    Call the update method with the new value to update the control
+
+code
+    | Subtle.Scale.update(value, time = "")
+
+p.
+    Here the time can be specified as an ISO string (YYYY-MM-DD HH:MM:SS) or as a javascript Date
+    (the default value, an empty string, means that the value passed corresponds to the present time).
+
+

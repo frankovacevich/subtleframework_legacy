@@ -1,0 +1,82 @@
+h3#text_simple Text simple
+
+p 
+    | Use 
+    code Subtle.TextSimple(object, params)
+    |  to display a single value as a label
+
+//
+h4 Example
+
+div.h_layout(style="height:150px")
+    div#text_simple1(style="max-width:200px")
+    div#text_simple2(style="max-width:200px")
+    div#text_simple3(style="max-width:200px")
+
+script.
+    var text_simple1 = new Subtle.TextSimple("text_simple1", {units:""});
+    var text_simple2 = new Subtle.TextSimple("text_simple2", {units:"L"});
+    var text_simple3 = new Subtle.TextSimple("text_simple3", {units:"kcal"});
+
+    text_simple1.update(250);
+    text_simple2.update(1.25684);
+    text_simple3.update(1250);
+
+pre 
+    code.block.javascript
+        | var text_simple1 = new Subtle.TextSimple("text_simple1", {units:""});
+        | var text_simple2 = new Subtle.TextSimple("text_simple2", {units:"L"});
+        | var text_simple3 = new Subtle.TextSimple("text_simple3", {units:"kcal"});
+        |
+        | text_simple1.update(250);
+        | text_simple2.update(1.25684);
+        | text_simple3.update(1250);
+
+//
+h4 Params
+
+table.params-table
+    tr
+        td param
+        td type
+        td default
+        td description
+    tr
+        td value
+        td Number / String
+        td 0
+        td Initial value
+    tr
+        td units
+        td String
+        td ""
+        td Units
+    tr
+        td v_align
+        td String ("top", "center", "bottom")
+        td "center"
+        td Vertical alignment
+    tr
+        td h_align
+        td String ("left", "center", "right")
+        td "center"
+        td Horizontal alignment
+    tr
+        td rounding
+        td Number
+        td 2
+        td Decimal position for rounding
+    tr
+        td font_size
+        td Number
+        td 36
+        td Font size (in pixels)
+
+//
+h4 Update
+
+p.
+    Call the update method with the new value to update the control
+
+code
+    | Subtle.TextSimple.update(text)

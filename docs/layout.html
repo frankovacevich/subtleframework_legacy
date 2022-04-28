@@ -1,0 +1,95 @@
+<html><head><meta content="text/html;charset=utf-8" http-equiv="Content-Type"/><meta content="utf-8" http-equiv="encoding"/><script src="https://cdn.plot.ly/plotly-latest.min.js"></script><script src="../dist/js/subtleframe.js"></script><script src="js/highlight.js"></script><script src="https://unpkg.com/@popperjs/core@2"></script><script src="https://unpkg.com/tippy.js@6"></script><script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script><script>hljs.initHighlightingOnLoad();
+</script><link rel="stylesheet" type="text/css" media="screen" href="../dist/css/subtleframe.css"/><link rel="stylesheet" type="text/css" media="screen" href="css/docstyle.css"/><link rel="stylesheet" type="text/css" media="screen" href="css/highlight.css"/><link rel="shortcut icon" href="img/subtle.svg"/><link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/><title>Subtleframe Docs</title></head><body><div class="sidebar"><div class="title"><i class="icon-subtle" style="font-size: 50px"></i><br/><br/><div>Subtleframe</div><p>v0.1</p></div><a class="item" href="index.html">Getting started</a><a class="item" href="examples.html">Examples</a><a class="item" href="colors.html">Colors</a><a class="item" href="icons.html">Icons</a><a class="item" href="layout.html">Layout</a><a class="sub item" href="layout.html#grid">Grid</a><a class="sub item" href="layout.html#panels">Panels</a><a class="sub item" href="layout.html#horizontal_vertical_layout">Horizontal and vertical layout</a><a class="sub item" href="layout.html#tabs">Tabs layout</a><a class="sub item" href="layout.html#reports">Reports</a><a class="item" href="controls.html">Controls</a><a class="sub item" href="controls.html#text_simple">Text Simple</a><a class="sub item" href="controls.html#gauge">Gauge</a><a class="sub item" href="controls.html#gauge_historic">Historic Gauge</a><a class="sub item" href="controls.html#scale">Scale</a><a class="sub item" href="controls.html#time_plot">Time plot</a><a class="sub item" href="controls.html#multi_time_plot">Multi time plot</a><a class="sub item" href="controls.html#sparkline">Sparkline</a><a class="sub item" href="controls.html#gantt_chart">Gnatt chart</a><a class="sub item" href="controls.html#line_plot">Lineplot</a><a class="sub item" href="controls.html#web_plot">Webplot</a><a class="sub item" href="controls.html#logger">Logger</a><a class="sub item" href="controls.html#svg_view">Svg view</a><a class="sub item" href="controls.html#map_view">Map view</a><a class="sub item" href="controls.html#table">Table</a><a class="sub item" href="controls.html#treeview">Tree view</a><a class="item" href="plotly.html">Plotly helpers</a><a class="sub item" href="plotly.html#scatter">Scatter plot</a><a class="sub item" href="plotly.html#column">Column chart</a><a class="sub item" href="plotly.html#pie">Pie chart</a><a class="sub item" href="plotly.html#boxes">Box and whiskers plot</a><a class="sub item" href="plotly.html#histogram">Histogram</a><a class="sub item" href="plotly.html#heatmap">Heatmap</a><a class="sub item" href="plotly.html#text">Text</a></div><h2 id="layout">Layout</h2><p>Almost all front-end frameworks provide ways to design a layout. Subtleframe includes some basic elements to create layouts for
+Dashboards and Deports.
+</p><h3 id="grid">Grid</h3><p>The simplest way to create a layout for a full screen dashboard is with the help of a grid. Subtleframe includes a CSS Class called
+<code>grid</code> that uses the property <code>display: grid</code>. Grids are 12x12 arrangements. You can place a div inside a grid
+setting the <code>grid-area</code> CSS property. See the following example:
+</p><h4>Example</h4><div class="grid_layout"><div style="grid-area: 1 / 1 / 5 / 5; background-color: rgba(0,0,0,0.1); text-align: center;"><p>1 / 1 / 5 / 5</p></div><div style="grid-area: 5 / 1 / 13 / 5; background-color: rgba(0,0,0,0.1); text-align: center;"><p>5 / 1 / 13 / 5</p></div><div style="grid-area: 1 / 9 / 13 / 13; background-color: rgba(0,0,0,0.1); text-align: center;"><p>1 / 9 / 13 / 13</p></div></div><pre><code class="block css">&lt;div class="grid_layout"&gt;
+  &lt;div style="grid-area: 1 / 1 / 5 / 5; background-color: rgba(0,0,0,0.1); text-align: center;"&gt;
+    &lt;p&gt;1 / 1 / 5 / 5&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style="grid-area: 5 / 1 / 13 / 5; background-color: rgba(0,0,0,0.1); text-align: center;"&gt;
+    &lt;p&gt;5 / 1 / 13 / 5&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style="grid-area: 1 / 9 / 13 / 13; background-color: rgba(0,0,0,0.1); text-align: center;"&gt;
+     &lt;p&gt;1 / 9 / 13 / 13&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><p>The <code>grid-area</code> property places each panel by it's coordinates on the 12x12 grid (taking 1 as the first row / column and 13
+as the last):
+</p><code>grid-area: first-row / first-column / last-row / last-column
+</code><p>To learn more about grids you can visit <a href=https://css-tricks.com/snippets/css/complete-guide-grid/)>this link</a></p><h3 id="panels">Panels</h3><p>A div inside a grid layout can become a panel by adding the class <code>gpanel</code> to it. A panel is simply decorated to add some
+padding, color and rounded borders
+</p><p>You can also use the <code>gtitle</code> class to create a title inside a div in a grid.
+</p><h4>Example</h4><div class="grid_layout"><div class="gpanel" style="grid-area: 1 / 1 / 5 / 5;"><div class="gtitle">Panel 1</div><p>1 / 1 / 5 / 5</p></div><div class="gpanel" style="grid-area: 5 / 1 / 13 / 5;"><div class="gtitle">Panel 2</div><p>5 / 1 / 13 / 5</p></div><div class="gpanel" style="grid-area: 1 / 9 / 13 / 13;"><div class="gtitle">Panel 3</div><p>1 / 9 / 13 / 13</p></div></div><pre><code class="block css">&lt;div class="grid_layout"&gt;
+  &lt;div class="gpanel" style="grid-area: 1 / 1 / 5 / 5;"&gt;
+    &lt;div class="gtitle"&gt;Panel 1&lt;/div&gt;
+    &lt;p&gt;1 / 1 / 5 / 5&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="gpanel" style="grid-area: 5 / 1 / 13 / 5;"&gt;
+    &lt;div class="gtitle"&gt;Panel 2&lt;/div&gt;
+    &lt;p&gt;5 / 1 / 13 / 5&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="gpanel" style="grid-area: 1 / 9 / 13 / 13;"&gt;
+    &lt;div class="gtitle"&gt;Panel 3&lt;/div&gt;
+    &lt;p&gt;1 / 9 / 13 / 13&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre><h3 id="horizontal_vertical_layout">Horizontal and vertical layout</h3><p>Inside grids you usually stack components vertically or horizontally. You can use the <code>h_layout</code> and <code>v_layout</code>
+CSS Classes to create a simple stacked layout. Divs placed inside any of these layouts will automatically resize and stack inside their
+parent.</p><h3 id="tabs">Tabs</h3><p>Subtleframe Tabs use javascript to create a tabbed layout to hide and show different divs.
+</p><h4>Example 1</h4><div class="gpanel" id="tablayout1" style="height: 200px; width: 100%;"><div id="tab11">Tab 1</div><div id="tab12">Tab 2</div><div id="tab13">Tab 3</div></div><script>var tl = new Subtle.TabsLayout("tablayout1", [
+    {div:"tab11", icon:"<i class='icon-sparkline'></i>", label:"ONE"},
+    {div:"tab12", icon:"<i class='icon-layout-1'></i>", label:"TWO"},
+    {div:"tab13", icon:"<i class='icon-warehouse-2'></i>", label:"THREE"},
+],{position:"center", show_labels_inline: false, icon_size: 20});
+</script><pre><code class="block css">&lt;div class="gpanel" id="tablayout1" style="height: 200px; width: 100%;" &gt;
+    &lt;div id="tab11"&gt; Tab 1 &lt;/div&gt;
+    &lt;div id="tab12"&gt; Tab 2 &lt;/div&gt;
+    &lt;div id="tab13"&gt; Tab 3 &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre><code class="block javascript">var tl = new Subtle.TabsLayout("tablayout1", [
+    {div:"tab11", icon:"&lt;i class='icon-sparkline'&gt;&lt;/i&gt;", label:"ONE"},
+    {div:"tab12", icon:"&lt;i class='icon-layout-1'&gt;&lt;/i&gt;", label:"TWO"},
+    {div:"tab13", icon:"&lt;i class='icon-warehouse-2'&gt;&lt;/i&gt;", label:"THREE"},
+],{position:"center", show_labels_inline: false, icon_size: 20});</code></pre><h4>Example 2</h4><div class="gpanel" id="tablayout2" style="height: 200px; width: 100%;"><div id="tab21">Tab 1</div><div id="tab22">Tab 2</div><div id="tab23">Tab 3</div></div><script>var tl = new Subtle.TabsLayout("tablayout2", [
+    {div:"tab21", icon:"<i class='icon-sparkline'></i>", label:"ONE"},
+    {div:"tab22", icon:"<i class='icon-layout-1'></i>", label:"TWO"},
+    {div:"tab23", icon:"<i class='icon-warehouse-2'></i>", label:"THREE"},
+],{show_labels_inline: true, position: "left", icon_size: 16});
+</script><pre><code class="block css">&lt;div class="gpanel" id="tablayout2" style="height: 200px; width: 100%;" &gt;
+    &lt;div id="tab21"&gt; Tab 1 &lt;/div&gt;
+    &lt;div id="tab22"&gt; Tab 2 &lt;/div&gt;
+    &lt;div id="tab23"&gt; Tab 3 &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre><code class="block javascript">var tl = new Subtle.TabsLayout("tablayout2", [
+    {div:"tab21", icon:"&lt;i class='icon-sparkline'&gt;&lt;/i&gt;", label:"ONE"},
+    {div:"tab22", icon:"&lt;i class='icon-layout-1'&gt;&lt;/i&gt;", label:"TWO"},
+    {div:"tab23", icon:"&lt;i class='icon-warehouse-2'&gt;&lt;/i&gt;", label:"THREE"},
+],{show_labels_inline: true, position: "left", icon_size: 16});</code></pre><h4>Example 3</h4><div class="gpanel" style="height: 300px; width: 100%; position: relative"><div id="tablayout3" style="position: relative; width: 56px; top: 0; bottom: 0; left: 0"></div><div id="tabcontainer" style="position: absolute; left: 66px; top: 0; bottom: 0; right: 0; padding: 10px"><div id="tab31">Tab 1</div><div id="tab32">Tab 2</div><div id="tab33">Tab 3</div></div></div><script>var tl = new Subtle.TabsLayout("tablayout3", [
+    {div:"tab31", icon:"<i class='icon-sparkline'></i>", label:"ONE"},
+    {div:"tab32", icon:"<i class='icon-layout-1'></i>", label:"TWO"},
+    {div:"tab33", icon:"<i class='icon-warehouse-2'></i>", label:"THREE"},
+],{direction: "vertical", position: "center", icon_size: 16,});
+</script><pre><code class="block css">&lt;div class="gpanel" style="height: 300px; width: 100%; position: relative" &gt;
+    &lt;div id="tablayout3" style="position: relative; width: 56px; top: 0; bottom: 0; left: 0" &gt;
+        &lt;div id="tabcontainer" style="position: absolute; left: 66px; top: 0; bottom: 0; right: 0; padding: 10px" &gt;
+            &lt;div id="tab31"&gt; Tab 1 &lt;/div&gt;
+            &lt;div id="tab32"&gt; Tab 2 &lt;/div&gt;
+            &lt;div id="tab33"&gt; Tab 3 &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre><pre><code class="block javascript">var tl = new Subtle.TabsLayout("tablayout3", [
+    {div:"tab31", icon:"&lt;i class='icon-sparkline'&gt;&lt;/i&gt;", label:"ONE"},
+    {div:"tab32", icon:"&lt;i class='icon-layout-1'&gt;&lt;/i&gt;", label:"TWO"},
+    {div:"tab33", icon:"&lt;i class='icon-warehouse-2'&gt;&lt;/i&gt;", label:"THREE"},
+],{direction: "vertical", position: "center", icon_size: 16,});</code></pre><h4>Constructor and Params</h4><p>To create a Tabs Layout, use the constructor:</p><pre><code class="block javascript">Subtle.TabsLayout(object_id, tabs, params)</code></pre><p>| Where <code>object_id</code> is the id of the parent container and tabs is a list of objects
+| with details on each tab: <code>{div: div_id, icon: html_code_for_icon, label: labe_text}</code>.
+| You can further edit a tabs layout with the following params:
+</p><table class="params-table"><tr><td>param</td><td>type</td><td>default</td><td>description</td></tr><tr><td>show_labels</td><td>Boolean</td><td>true</td><td>Show / hide labels</td></tr><tr><td>show_labels_inline</td><td>Boolean</td><td>false</td><td>Show labels on the same line as icons</td></tr><tr><td>show_icons</td><td>Boolean</td><td>true</td><td>Show / hide icons</td></tr><tr><td>icon_size</td><td>Number</td><td>16</td><td>Icon size (pixels)</td></tr><tr><td>position</td><td>String ("center", "left", "fill")</td><td>"center"</td><td>Position of the tabs</td></tr><tr><td>direction</td><td>String ("horizontal", "vertical")</td><td>"horizontal"</td><td>The orientation of the tabs</td></tr><tr><td>dock_bottom</td><td>Boolean</td><td>false</td><td>Place the tabs on the bottom of the container (for horizontal direction)</td></tr><tr><td>color</td><td>String (from Subtle.COLORS, hex or rgb)</td><td>COLORS['primary']</td><td>Selected tab color</td></tr></table><h3 id="reports">Reports</h3><p>You can use the class <code>report-page</code> to create a printable html report.
+</p><pre><code class="block html">&lt;div class="report-page"&gt;
+  &lt;div class="report-header"&gt;
+    &lt;div style="text-align:left"&gt;Automatic report&lt;br>&lt;a id="report_name"&gt;report_example&lt;/a>&lt;/div&gt;
+    &lt;div style="text-align:center"&gt;&lt;i class="icon-subtle"&gt;&lt;/i&gt;&lt;/div&gt;
+    &lt;div style="text-align:right"&gt;Date: &lt;br&gt;&lt;a id="date"&gt;@&lt;/a&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;hr&gt;
+&lt;div class="report-body"&gt;
+
+</code></pre><p>Look at <a href="/samples/report_example.html">this example</a> of an html report.</p><div style="height:100px"></div></body></html>

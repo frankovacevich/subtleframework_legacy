@@ -1,0 +1,30 @@
+h3#text Text
+
+p.
+    Use <code>Subtle.PlotlyObject.add_text(x, y, text, params)</code> to text to the plotly object.
+
+p.
+    The <code>x</code>, <code>y</code> and <code>text</code> arguments can be strings (if you want to add
+    a single piece of text) or arrays (if you want to add multiple pieces of text).
+
+table.params-table
+    tr
+        td param
+        td type
+        td default
+        td description
+    tr
+        td textposition
+        td String ("top", "middle", "bottom" + "left", "right", "center")
+        td "middle center"
+        td Position of the text
+    tr
+        td showlegend
+        td Boolean
+        td false
+        td Show in legend
+    tr
+        td zindex
+        td Number
+        td 9999
+        td Index to place the text above or below other traces

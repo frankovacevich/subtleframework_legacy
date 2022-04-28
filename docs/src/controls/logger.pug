@@ -1,0 +1,70 @@
+h3#logger Logger
+
+p 
+    | Use 
+    code Subtle.Sparkline(object, params)
+    |  to display small time plot
+
+//
+h4 Example
+
+div.h_layout(style="height:250px")
+    div#mlogger(style="max-width:500px")
+
+
+script.
+    var mlogger = new Subtle.Logger("mlogger");
+    mlogger.update("info", "Some info", "This is the info text");
+    mlogger.update("warning", "Some warning", "This is the warning text");
+    mlogger.update("error", "Some error", "This is the error text");
+    mlogger.update("info", "More info", "More info");
+    
+    
+pre 
+    code.block.javascript
+        | var mlogger = new Subtle.Logger("mlogger");
+        | 
+        | mlogger.update("info", "Some info", "This is the info text");
+        | mlogger.update("warning", "Some warning", "This is the warning text");
+        | mlogger.update("error", "Some error", "This is the error text");
+        | mlogger.update("info", "More info", "More info");
+
+//
+h4 Params
+
+table.params-table
+    tr
+        td param
+        td type
+        td default
+        td description
+    tr
+        td show_stems
+        td Boolean
+        td true
+        td Shows vertical lines joining the entries of the logger
+    tr
+        td show_timestamp
+        td Boolean
+        td false
+        td Shows a timestamp on each entry
+    tr
+        td max_length
+        td Number
+        td 100
+        td How many entries are displayed on the logger
+    
+
+//
+h4 Update
+
+p.
+    Call the update method to insert a new entry, specifing the icon, the title and the text
+
+code
+    | Subtle.GaugeHistoric.update(icon, title, text, [timestamp = ""], [color = ""])
+
+p.
+    The icon can be "info", "warning" or "error". The color parameter is the color of the icon. If
+    it's an empty string, it will display the corresponding color from Subtle.COLORS.
+

@@ -1,0 +1,47 @@
+h3#column Column chart
+
+p.
+    Use <code>Subtle.PlotlyObject.add_columnchart(data, params)</code> to add a column
+    chart to a plotly object.
+
+div#plotly_column(style="width:100%; height:400px")
+
+script.
+    var plotly_column = new Subtle.PlotlyObject("plotly_column", {showlegend: true});
+    plotly_column.add_columnchart([["Alpha", "Beta", "Gamma", "Delta"], [7,5,6,8]], {name: "X"});
+    plotly_column.add_columnchart([["Alpha", "Beta", "Gamma", "Delta"], [3,7,8,8]], {name: "Y"});
+    plotly_column.add_columnchart([["Alpha", "Beta", "Gamma", "Delta"], [6,6,6,25]], {name: "Z"});
+    plotly_column.draw();
+
+pre
+    code.block.javascript.
+        var plotly_column = new Subtle.PlotlyObject("plotly_column", {});
+        plotly_column.add_columnchart([["Alpha", "Beta", "Gamma", "Delta"], [7,5,6,8]], {name: "X"});
+        plotly_column.add_columnchart([["Alpha", "Beta", "Gamma", "Delta"], [3,7,8,8]], {name: "Y"});
+        plotly_column.add_columnchart([["Alpha", "Beta", "Gamma", "Delta"], [6,6,6,25]], {name: "Z"});
+        plotly_column.draw();
+
+table.params-table
+    tr
+        td param
+        td type
+        td default
+        td description
+    tr
+        td name
+        td String
+        td ""
+        td Series name (used for the legend)
+    tr
+        td color
+        td String (from Subtle.COLORS, hex or rgb)
+        td COLORS['primary']
+        td Plot color
+    tr
+        td zindex
+        td Number
+        td 0
+        td Index to place the plot above or below other traces.
+
+p.
+    To create a stacked column chart, you could use <code>plotly_column.layout.barmode = "stack"</code>.

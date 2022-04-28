@@ -1,0 +1,84 @@
+h3#sparkline Sparkline
+
+p 
+    | Use 
+    code Subtle.Sparkline(object, params)
+    |  to display small time plot
+
+//
+h4 Example
+
+div.h_layout(style="height:50px")
+    div#sparkline1(style="max-width:100px")
+    div#sparkline2(style="max-width:100px")
+    div#sparkline3(style="max-width:100px")
+    div#sparkline4(style="max-width:100px")
+
+script.
+    var sparkline1 = new Subtle.Sparkline("sparkline1", {color:Subtle.COLOR_PALETTES["alternative"][0]});
+    var sparkline2 = new Subtle.Sparkline("sparkline2", {color:Subtle.COLOR_PALETTES["alternative"][1]});
+    var sparkline3 = new Subtle.Sparkline("sparkline3", {color:Subtle.COLOR_PALETTES["alternative"][2]});
+    var sparkline4 = new Subtle.Sparkline("sparkline4", {color:Subtle.COLOR_PALETTES["alternative"][3]});
+    window.setInterval(function(){
+        sparkline1.update(Math.random());
+        sparkline2.update(Math.random());
+        sparkline3.update(Math.random());
+        sparkline4.update(Math.random());
+    }, 200);
+    
+    
+pre 
+    code.block.javascript
+        | var sparkline1 = new Subtle.Sparkline("sparkline1", 
+        |   {color:Subtle.COLOR_PALETTES["alternative"][0]});
+        | var sparkline2 = new Subtle.Sparkline("sparkline2", 
+        |   {color:Subtle.COLOR_PALETTES["alternative"][1]});
+        | var sparkline3 = new Subtle.Sparkline("sparkline3", 
+        |   {color:Subtle.COLOR_PALETTES["alternative"][2]});
+        | var sparkline4 = new Subtle.Sparkline("sparkline4", 
+        |   {color:Subtle.COLOR_PALETTES["alternative"][3]});
+        |
+        | window.setInterval(function(){
+        |     sparkline1.update(Math.random()*0.25+0.5);
+        |     sparkline2.update(Math.random()*0.25+0.5);
+        |     sparkline3.update(Math.random()*0.25+0.5);
+        |     sparkline4.update(Math.random()*0.25+0.5);
+        | }, 500);
+
+//
+h4 Params
+
+p The sparkline inherits all params from TimePlot, with the following differences:
+
+table.params-table
+    tr
+        td param
+        td type
+        td default
+        td description
+    tr
+        td fade
+        td Boolean
+        td true
+        td Makes the plot line fade to the left
+    tr
+        td endpoint
+        td Boolean
+        td true
+        td Draws a circle at the end
+    
+
+//
+h4 Update
+
+p.
+    Call the update method with the new value to update the control
+
+code
+    | Subtle.GaugeHistoric.update(value, time = "")
+
+p.
+    Here the time can be specified as an ISO string (YYYY-MM-DD HH:MM:SS) or as a javascript Date
+    (the default value, an empty string, means that the value passed corresponds to the present time).
+
+

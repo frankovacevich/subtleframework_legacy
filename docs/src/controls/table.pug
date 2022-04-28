@@ -1,0 +1,117 @@
+h3#table Table
+
+p 
+    | Use 
+    code Subtle.Table(object, params)
+    |  to display a table with data
+
+//
+h4 Example
+
+div#table_div(style="width:100%;")
+
+script.
+    var table = new Subtle.Table("table_div", {headers: ["Row", "North", "East", "South", "West"], allow_sort: true, insert_on_top: true});
+
+    table.update("row 1", {"Row": 1, "North": 10});
+    table.update("row 2", {"Row": 2, "North": 9, "East": 8});
+    table.update("row 3", {"Row": 3, "North": 9, "South": 12});
+    table.update("row 4", {"Row": 4, "North": 10, "East": 55, "South": 3, "West": 15});
+
+    table.update("row 2", {"East": 35});
+    
+    
+pre 
+    code.block.javascript
+        | var table = new Subtle.Table("table_div", 
+        |   {headers: ["Row", "North", "East", "South", "West"], 
+        |   allow_sort: true, 
+        |   insert_on_top: true}
+        | );
+        | 
+        | table.update("row 1", {"Row": 1, "North": 10});
+        | table.update("row 2", {"Row": 2, "North": 9, "East": 8});
+        | table.update("row 3", {"Row": 3, "North": 9, "South": 12});
+        | table.update("row 4", {"Row": 4, "North": 10, "East": 55, "South": 3, "West": 15});
+        | 
+        | table.update("row 2", {"East": 35});
+
+//
+h4 Params
+
+table.params-table
+    tr
+        td param
+        td type
+        td default
+        td description
+    tr
+        td headers
+        td Array[String]
+        td ["A","B","C","D"]
+        td Array with the names of each column
+    tr
+        td header_aliases
+        td Object ({header: alias})
+        td {}
+        td A map to change the header's names on the table
+    tr
+        td table_class
+        td String
+        td "subtletable"
+        td CSS class to apply to the table for styling
+    tr
+        td show_row_headers
+        td Boolean
+        td true
+        td Show a column that indicates the row number
+    tr
+        td row_header_width
+        td Number
+        td 30
+        td Row heades' column width (in pixels)
+    tr
+        td null_cell_text
+        td String
+        td ""
+        td Value that should be displayed in case a cell has no value
+    tr
+        td allow_sort
+        td Boolean
+        td false
+        td Let's the user sort the rows of the table by clicking the headers
+    tr
+        td insert_on_top
+        td Boolean
+        td false
+        td Insert new rows on top
+    tr
+        td max_displayed_data
+        td Number
+        td 100
+        td Max number of rows displayed
+    tr
+        td remove_old_data
+        td Boolean
+        td true
+        td Remove old rows when the number of rows passes the limit (max_displayed_data)
+    
+
+
+//
+h4 Update
+
+p.
+    Call the update method to add new rows to the table:
+
+code
+    | Subtle.Table.update(id, data)
+
+p.
+    For each row you insert, you need to specify a row id. You you also pass an empty string ("") as id
+    and the data will be assigned an auto id.
+
+p.
+    The data argument on the update function is a dict {column: value}, where column is the name of the
+    column as defined by the headers (Table.params.headers)
+

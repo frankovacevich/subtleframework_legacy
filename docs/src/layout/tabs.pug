@@ -1,0 +1,162 @@
+h3#tabs Tabs
+
+p.
+    Subtleframe Tabs use javascript to create a tabbed layout to hide and show different divs.
+
+h4 Example 1
+
+div.gpanel#tablayout1(style="height: 200px; width: 100%;")
+    div#tab11 Tab 1
+    div#tab12 Tab 2
+    div#tab13 Tab 3
+
+script.
+    var tl = new Subtle.TabsLayout("tablayout1", [
+        {div:"tab11", icon:"<i class='icon-sparkline'></i>", label:"ONE"},
+        {div:"tab12", icon:"<i class='icon-layout-1'></i>", label:"TWO"},
+        {div:"tab13", icon:"<i class='icon-warehouse-2'></i>", label:"THREE"},
+    ],{position:"center", show_labels_inline: false, icon_size: 20});
+
+pre
+    code.block.css
+        | &lt;div class="gpanel" id="tablayout1" style="height: 200px; width: 100%;" &gt;
+        |     &lt;div id="tab11"&gt; Tab 1 &lt;/div&gt;
+        |     &lt;div id="tab12"&gt; Tab 2 &lt;/div&gt;
+        |     &lt;div id="tab13"&gt; Tab 3 &lt;/div&gt;
+        | &lt;/div&gt;
+
+pre
+    code.block.javascript
+        | var tl = new Subtle.TabsLayout("tablayout1", [
+        |     {div:"tab11", icon:"&lt;i class='icon-sparkline'&gt;&lt;/i&gt;", label:"ONE"},
+        |     {div:"tab12", icon:"&lt;i class='icon-layout-1'&gt;&lt;/i&gt;", label:"TWO"},
+        |     {div:"tab13", icon:"&lt;i class='icon-warehouse-2'&gt;&lt;/i&gt;", label:"THREE"},
+        | ],{position:"center", show_labels_inline: false, icon_size: 20});
+
+
+h4 Example 2
+
+div.gpanel#tablayout2(style="height: 200px; width: 100%;")
+    div#tab21 Tab 1
+    div#tab22 Tab 2
+    div#tab23 Tab 3
+
+script.
+    var tl = new Subtle.TabsLayout("tablayout2", [
+        {div:"tab21", icon:"<i class='icon-sparkline'></i>", label:"ONE"},
+        {div:"tab22", icon:"<i class='icon-layout-1'></i>", label:"TWO"},
+        {div:"tab23", icon:"<i class='icon-warehouse-2'></i>", label:"THREE"},
+    ],{show_labels_inline: true, position: "left", icon_size: 16});
+
+pre
+    code.block.css
+        | &lt;div class="gpanel" id="tablayout2" style="height: 200px; width: 100%;" &gt;
+        |     &lt;div id="tab21"&gt; Tab 1 &lt;/div&gt;
+        |     &lt;div id="tab22"&gt; Tab 2 &lt;/div&gt;
+        |     &lt;div id="tab23"&gt; Tab 3 &lt;/div&gt;
+        | &lt;/div&gt;
+
+pre
+    code.block.javascript
+        | var tl = new Subtle.TabsLayout("tablayout2", [
+        |     {div:"tab21", icon:"&lt;i class='icon-sparkline'&gt;&lt;/i&gt;", label:"ONE"},
+        |     {div:"tab22", icon:"&lt;i class='icon-layout-1'&gt;&lt;/i&gt;", label:"TWO"},
+        |     {div:"tab23", icon:"&lt;i class='icon-warehouse-2'&gt;&lt;/i&gt;", label:"THREE"},
+        | ],{show_labels_inline: true, position: "left", icon_size: 16});
+
+h4 Example 3
+
+div.gpanel(style="height: 300px; width: 100%; position: relative")
+    div#tablayout3(style="position: relative; width: 56px; top: 0; bottom: 0; left: 0")
+    div#tabcontainer(style="position: absolute; left: 66px; top: 0; bottom: 0; right: 0; padding: 10px")
+        div#tab31 Tab 1
+        div#tab32 Tab 2
+        div#tab33 Tab 3
+
+script.
+    var tl = new Subtle.TabsLayout("tablayout3", [
+        {div:"tab31", icon:"<i class='icon-sparkline'></i>", label:"ONE"},
+        {div:"tab32", icon:"<i class='icon-layout-1'></i>", label:"TWO"},
+        {div:"tab33", icon:"<i class='icon-warehouse-2'></i>", label:"THREE"},
+    ],{direction: "vertical", position: "center", icon_size: 16,});
+
+pre
+    code.block.css
+        | &lt;div class="gpanel" style="height: 300px; width: 100%; position: relative" &gt;
+        |     &lt;div id="tablayout3" style="position: relative; width: 56px; top: 0; bottom: 0; left: 0" &gt;
+        |         &lt;div id="tabcontainer" style="position: absolute; left: 66px; top: 0; bottom: 0; right: 0; padding: 10px" &gt;
+        |             &lt;div id="tab31"&gt; Tab 1 &lt;/div&gt;
+        |             &lt;div id="tab32"&gt; Tab 2 &lt;/div&gt;
+        |             &lt;div id="tab33"&gt; Tab 3 &lt;/div&gt;
+        |         &lt;/div&gt;
+        |     &lt;/div&gt;
+        | &lt;/div&gt;
+
+pre
+    code.block.javascript
+        | var tl = new Subtle.TabsLayout("tablayout3", [
+        |     {div:"tab31", icon:"&lt;i class='icon-sparkline'&gt;&lt;/i&gt;", label:"ONE"},
+        |     {div:"tab32", icon:"&lt;i class='icon-layout-1'&gt;&lt;/i&gt;", label:"TWO"},
+        |     {div:"tab33", icon:"&lt;i class='icon-warehouse-2'&gt;&lt;/i&gt;", label:"THREE"},
+        | ],{direction: "vertical", position: "center", icon_size: 16,});
+
+
+h4 Constructor and Params
+
+p To create a Tabs Layout, use the constructor:
+
+pre
+    code.block.javascript
+        | Subtle.TabsLayout(object_id, tabs, params)
+
+p.
+    | Where <code>object_id</code> is the id of the parent container and tabs is a list of objects
+    | with details on each tab: <code>{div: div_id, icon: html_code_for_icon, label: labe_text}</code>.
+    | You can further edit a tabs layout with the following params:
+
+table.params-table
+    tr
+        td param
+        td type
+        td default
+        td description
+    tr
+        td show_labels
+        td Boolean
+        td true
+        td Show / hide labels
+    tr
+        td show_labels_inline
+        td Boolean
+        td false
+        td Show labels on the same line as icons
+    tr
+        td show_icons
+        td Boolean
+        td true
+        td Show / hide icons
+    tr
+        td icon_size
+        td Number
+        td 16
+        td Icon size (pixels)
+    tr
+        td position
+        td String ("center", "left", "fill")
+        td "center"
+        td Position of the tabs
+    tr
+        td direction
+        td String ("horizontal", "vertical")
+        td "horizontal"
+        td The orientation of the tabs
+    tr
+        td dock_bottom
+        td Boolean
+        td false
+        td Place the tabs on the bottom of the container (for horizontal direction)
+    tr
+        td color
+        td String (from Subtle.COLORS, hex or rgb)
+        td COLORS['primary']
+        td Selected tab color

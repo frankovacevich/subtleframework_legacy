@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+
+    <!-- JQuery and bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+    <!-- Include plotly -->
+    <script type="text/javascript" src="dependencies/js/plotly-latest.min.js"></script>
+
+    <!-- Include javascript -->
+    <link rel="stylesheet" href="../dist/css/subtleframe.css">
+    <script type="text/javascript" src="../dist/js/subtleframe.js"></script>
+
+
+  </head>
+
+  <style>
+
+  </style>
+
+  <script>
+    COLORS = {};
+    COLORS["primary"] = "#53A680";
+
+    var data1a = [2.69,2.785, 3.43, 3.15, 3.1, 2.945, 3.475, 2.97, 3.39, 3.685, 2.265, 2.805, 2.46,  3.23, 3.39, 4.155, 4.59, 2.825, 2.47, 2.575, 2.86, 2.655, 2.55, 2.52, 2.66, 3.84, 3.85, 1.755, 2.07, 2.065, 2.83, 2.98, 2.615, 2.27, 3.405,3.605, 3.39, 4.335, 3.41, 3.97, 3.82, 3.725, 3.83, 3.625, 3.945, 3.44, 3.47, 3.405, 3.34, 3.31, 3.43, 3.625, 3.33, 3.4, 3.84, 3.58, 3.29, 3.94, 3.36, 3.665, 3.605, 3.495, 3.715, 3.74, 3.61, 3.65];
+    var data1b = [3.5, 3.57, 3.76, 3.46, 3.51, 3.23, 3.74, 3.7, 3.74, 3.51, 3.44, 3.62, 3.34, 3.46, 3.485, 3.7, 3.79, 3.515, 3.435, 3.545, 3.665, 3.4, 3.355, 3.425, 3.515, 3.63, 3.335, 3.685, 3.585, 3.565, 3.685, 3.395, 3.975, 3.475, 3.505, 3.515, 3.25, 3.765, 3.355, 3.46, 3.47, 3.695, 3.64, 3.485, 3.63, 3.67, 3.315, 3.445, 4.125, 3.905, 4.005, 3.84, 3.395, 3.295, 3.535, 3.505, 3.41, 3.415, 3.64, 3.5, 3.61, 3.575, 3.92, 3.435, 3.395, 3.665, 3.42, 3.48, 3.315, 3.415, 3.56, 3.705, 3.54, 3.22, 3.255, 3.585, 3.785, 3.24, 3.805, 3.31, 3.435, 3.88, 3.345, 3.36, 3.515, 3.865, 3.24, 3.425, 3.96, 3.495, 3.375, 3.83, 3.905, 3.43, 3.59, 3.925, 3.985, 3.725, 3.315, 3.46, 3.33, 4.17, 3.56, 3.29, 3.395, 3.38, 3.02, 3.555, 4.065, 3.71, 3.965, 3.325, 3.925, 3.36, 3.475];
+    var data1c = [3.34, 3.86, 3.47, 3.345, 3.865, 3.865, 3.73, 3.84, 3.675, 3.325, 3.43, 3.58, 3.375, 3.405, 3.93, 3.575, 3.5, 3.7, 3.33, 3.395, 3.58, 3.595, 3.355, 3.425, 3.375, 3.695, 3.97, 3.825, 3.75, 3.445, 3.53, 3.385, 3.765, 3.345, 3.755, 3.435, 3.305, 3.305, 3.325, 3.525, 3.275, 3.725, 3.815, 3.245, 3.97, 3.395, 3.39, 3.53, 3.07, 3.69, 3.305, 3.315, 3.445, 3.385, 3.87, 3.73, 3.865, 3.595, 3.39, 3.365, 3.465, 3.72, 3.365, 3.38, 3.575, 3.705, 3.65, 3.28, 3.28, 3.27, 3.685, 3.88, 3.535, 3.645, 3.545, 3.37, 3.395, 3.395, 3.83, 3.91, 3.56, 3.805, 3.205, 3.685, 3.285, 3.51, 3.485, 3.77, 3.72, 3.925, 3.575, 3.415, 3.725, 3.65, 3.42, 3.22, 3.33, 3.525, 3.485, 3.395, 3.52, 4.07, 3.515, 3.495, 3.5, 3.365, 3.755, 3.605, 3.625, 3.215, 3.995, 3.125, 3.63, 3.795, 3.68, 3.705, 3.75, 3.905, 3.675, 3.905, 3.705, 3.51, 3.82, 3.105, 3.925, 3.705, 3.425, 3.31, 3.605, 4.245, 3.7, 3.255, 3.54, 3.55, 3.61, 3.455, 3.975, 3.825, 3.48];
+
+    var data2 = [ [[0,1,2,3,4,5,6],[8,4,9,7,5,4,2]],[[0,1,2,3,4,5,6],[1,5,9,6,2,1,8]],[[0,1,2,3,4,5,6],[1,5,3,9,4,5,8]],[[0,1,2,3,4,5,6],[1,8,6,7,4,2,5]]  ];
+
+    var data3a = [ ["Africa","Asia","Europe","America"], [25,35,30,10] ];
+    var data3b = [ ["Africa","Asia","Europe","America"], [15,35,20,15] ];
+    var data3c = [ ["Africa","Asia","Europe","America"], [12,26,22,16] ];
+
+    var data4 = [ [1,2,3,4],[4,2,1,3],[3,3,1,3] ];
+
+
+
+
+  </script>
+
+  <body>
+    <!-- Report -->
+    <div class="report-page">
+
+      <div class="report-header">
+        <div style="text-align:left">Reporte automático<br><a id="report_name">report_example</a></div>
+        <div style="text-align:center"><i class="icon-subtle"></i></div>
+        <div style="text-align:right">Generado el<br><a id="date">22/10/2020</a></div>
+      </div>
+      <hr>
+
+
+      <div class="report-body" >
+
+        <h1>Reporte sobre bla bla bla</h1>
+
+        <div id="tiles_1"></div>
+
+        <h2>c</h2>
+        <div id="plot2" class="fig"></div>
+        <div class="fig_txt">Grafico 2</div>
+
+        <h2>c</h2>
+        <div id="plot3" class="fig"></div>
+        <div class="fig_txt">Grafico 3</div>
+
+        <h2>c</h2>
+        <div id="plot4" class="fig"></div>
+        <div class="fig_txt">Grafico 4</div>
+
+        <h2>c</h2>
+        <div id="plot5" class="fig"></div>
+        <div class="fig_txt">Grafico 5</div>
+
+        <h2>b</h2>
+        <div id="plot1" class="fig"></div>
+        <div class="fig_txt">A counter can also be useful to make outlined lists because a new instance of a counter is automatically created in child elements. Here we use the counters() function to insert a string between different levels of nested counters:</div>
+
+        <h2>c</h2>
+        <div id="plot6" class="fig"></div>
+        <div class="fig_txt">Grafico 6</div>
+
+        <h2>Table</h2>
+        <div id="plot1"></div>
+
+
+      </div>
+
+    </div>
+
+
+  </body>
+
+  <!-- ===================================================================== -->
+  <!-- JAVASCRIPT -->
+  <!-- ===================================================================== -->
+  <script>
+
+  //document.body.onload = function(){
+
+    var plotly2 = new Subtle.PlotlyObject("plot2");
+    plotly2.add_scatter(data2[0], {name: "a", color: Subtle.COLOR_PALETTES["main"][0], show_markers: true});
+    plotly2.add_scatter(data2[1], {name: "b", color: Subtle.COLOR_PALETTES["main"][1]});
+    plotly2.add_scatter(data2[2], {name: "c", color: Subtle.COLOR_PALETTES["main"][2]});
+    plotly2.add_text(data2[1][0], data2[1][1], data2[1][1], {textposition:"top right"});
+    plotly2.layout.showlegend = true;
+    plotly2.draw();
+
+    var plotly3 = new Subtle.PlotlyObject("plot3");
+    plotly3.add_columnchart(data3a, {name: "a", color: Subtle.COLOR_PALETTES["main"][0]});
+    plotly3.add_columnchart(data3b, {name: "b", color: Subtle.COLOR_PALETTES["main"][1]});
+    plotly3.add_columnchart(data3c, {name: "c", color: Subtle.COLOR_PALETTES["main"][2]});
+    plotly3.layout.showlegend = true;
+    plotly3.layout.barmode = "stack";
+    plotly3.draw();
+
+    var plotly4 = new Subtle.PlotlyObject("plot4");
+    plotly4.add_piechart(data3a, {name: "a", col: 0, colors: Subtle.COLOR_PALETTES["main"]});
+    plotly4.add_piechart(data3b, {name: "b", col: 1, colors: Subtle.COLOR_PALETTES["main"]});
+    plotly4.add_piechart(data3c, {name: "c", col: 2, colors: Subtle.COLOR_PALETTES["main"]});
+    plotly4.layout.grid = {rows: 1, columns: 3};
+    plotly4.draw();
+
+    var plotly5 = new Subtle.PlotlyObject("plot5");
+    plotly5.add_boxandwhiskers(data1a, {name: "a"});
+    plotly5.add_boxandwhiskers(data1b, {name: "b"});
+    plotly5.add_boxandwhiskers(data1c, {name: "c"});
+    plotly5.draw();
+
+    var plotly1 = new Subtle.PlotlyObject("plot1");
+    plotly1.add_histogram([].concat(data1a, data1b, data1c), {nbins: 30});
+    plotly1.draw();
+
+    var plotly6 = new Subtle.PlotlyObject("plot6");
+    plotly6.add_heatmap(data4, {});
+    plotly6.draw();
+
+
+    //draw_table("plot1",data1,{});
+    /*plot_histogram("plot2",data3,{nbins:10});
+    plot_heatmap("plot3",data2,{show_scale:false});
+
+    plot_scatter("plot4",data4,{show_leyend:true, x_axis: "Valores de X", y_axis:"Valores de Y"});
+    plot_barchart("plot5",data5,{});
+
+    var gantt1 = prepare_series_for_gantt([ [0,1,2,3,4,5,6,7,8,9], [0,0,1,1,0,1,0,0,1,1] ]);
+    var gantt2 = prepare_series_for_gantt([ [0,1,2,3,4,5,6,7,8,9], [0,1,0,1,0,0,1,1,0,0] ]);
+    plot_gantt("plot6",[gantt1,gantt2],{labels:["Gantt1","Gantt2"]})
+
+    data = [[0,5,4,6],[0,9,1,3],[0,5,4,6],[0,9,1,3],[0,5,4,6],[0,9,1,3],[0,5,4,6],[0,9,1,3]];
+    plot_boxes("plot7", data, {});
+
+
+    draw_tiles("tiles_1",["100","120","15"],{prefixes:["<i class='icon-temperature'></i>","<i class='icon-bell'></i>","<i class='icon-fire'></i>"]})
+    */
+  //}
+
+
+
+  </script>
+
+
+</html>

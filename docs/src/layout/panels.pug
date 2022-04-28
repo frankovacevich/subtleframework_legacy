@@ -1,0 +1,38 @@
+h3#panels Panels
+
+p.
+    A div inside a grid layout can become a panel by adding the class <code>gpanel</code> to it. A panel is simply decorated to add some
+    padding, color and rounded borders
+
+p.
+    You can also use the <code>gtitle</code> class to create a title inside a div in a grid.
+
+h4 Example
+
+div.grid_layout
+    div.gpanel(style="grid-area: 1 / 1 / 5 / 5;")
+        div.gtitle Panel 1
+        p 1 / 1 / 5 / 5
+    div.gpanel(style="grid-area: 5 / 1 / 13 / 5;")
+        div.gtitle Panel 2
+        p 5 / 1 / 13 / 5
+    div.gpanel(style="grid-area: 1 / 9 / 13 / 13;")
+        div.gtitle Panel 3
+        p 1 / 9 / 13 / 13
+
+pre
+    code.block.css
+        | &lt;div class="grid_layout"&gt;
+        |   &lt;div class="gpanel" style="grid-area: 1 / 1 / 5 / 5;"&gt;
+        |     &lt;div class="gtitle"&gt;Panel 1&lt;/div&gt;
+        |     &lt;p&gt;1 / 1 / 5 / 5&lt;/p&gt;
+        |   &lt;/div&gt;
+        |   &lt;div class="gpanel" style="grid-area: 5 / 1 / 13 / 5;"&gt;
+        |     &lt;div class="gtitle"&gt;Panel 2&lt;/div&gt;
+        |     &lt;p&gt;5 / 1 / 13 / 5&lt;/p&gt;
+        |   &lt;/div&gt;
+        |   &lt;div class="gpanel" style="grid-area: 1 / 9 / 13 / 13;"&gt;
+        |     &lt;div class="gtitle"&gt;Panel 3&lt;/div&gt;
+        |     &lt;p&gt;1 / 9 / 13 / 13&lt;/p&gt;
+        |   &lt;/div&gt;
+        | &lt;/div&gt;

@@ -1,0 +1,159 @@
+h3#svg_view Svg View
+
+p
+    | Use
+    code Subtle.SvgView(object, params)
+    |  to display an interactive svg image
+
+//
+h4 Examples
+
+div.h_layout(style="height:400px")
+    div#svgview1(style="max-width:500px")
+
+
+script.
+    var server_state = true;
+    var svgview1 = new Subtle.SvgView("svgview1",{img:"img/svg_example.svg", onload:function(){
+        svgview1.set_child_color("svg_server_item","ok");
+        svgview1.set_child_bind("svg_accesspoint_item_b","svg_cellphone_item");
+
+        svgview1.set_child_onclick("svg_server_item_b", function(){
+        server_state = !server_state;
+        svgview1.set_child_color("svg_server_item",server_state ? "ok" : "error");
+        });
+
+        svgview1.set_child_tooltip("svg_pc_item_b","<b id='caca'>Desktop PC</b><br>192.168.0.10");
+        svgview1.set_child_tooltip("svg_laptop_item_b","<b>Laptop</b><br>192.168.0.20");
+    }});
+
+pre
+    code.block.javascript
+        | var server_state = true;
+        | var svgview = new Subtle.SvgView("svgview",
+        |    {img:"img/svg_example.svg",
+        |    onload:function(){
+        |       svgview.set_child_color("svg_server_item","ok");
+        |       svgview.set_child_bind("svg_accesspoint_item_b","svg_cellphone_item");
+        |
+        |       svgview.set_child_onclick("svg_server_item_b", function(){
+        |          server_state = !server_state;
+        |          svgview.set_child_color("svg_server_item",server_state ? "ok" : "error");
+        |       });
+        |
+        |       svgview.set_child_tooltip("svg_pc_item_b","&lt;b&gt;Desktop PC&lt;/b&gt;&lt;br&gt;192.168.0.10");
+        |       svgview.set_child_tooltip("svg_laptop_item_b","&lt;b&gt;Laptop&lt;/b&gt;&lt;br&gt;192.168.0.20");
+        |    }
+        |    }
+        | );
+
+div#svgview2(style="height:260px")
+
+script.
+    var svgview2 = new Subtle.SvgView("svgview2",{img:"img/svg_example_2.svg", onload:function(){
+        svgview2.set_child_for_html("svg_tank_1_A");
+        svgview2.set_child_for_html("svg_tank_1_B");
+        svgview2.set_child_for_html("svg_tank_2");
+        svgview2.set_child_for_html("svg_tank_3");
+
+        let svg_tank_1_A = new Subtle.Scale("svg_tank_1_A", {});
+
+        let svg_tank_1_B = new Subtle.TimePlot("svg_tank_1_B", {smooth: true, right_offset: 0});
+        window.setInterval(function(){
+            svg_tank_1_B.update(Math.random()*0.7+0.25)
+            svg_tank_1_A.update(Math.random()*0.5+0.25)
+        }, 100)
+
+        let svg_tank_2 = new Subtle.LinePlot("svg_tank_2", {values_x: [0,0.33,0.66,1], show_ticks: true, direction: "vertical", show_values: true, value_offset: 39, ticks_major: []})
+        svg_tank_2.update([0.2,-0.2,0.8,0]);
+
+        let svg_tank_3 = new Subtle.FillBar("svg_tank_3", {vertical: true, border_radius: 0})
+        svg_tank_3.update(0.7);
+    }});
+
+pre
+    code.block.javascript
+        | var svgview2 = new Subtle.SvgView("svgview2",
+        |    {img:"img/svg_example_2.svg", 
+        |    onload:function(){
+        |       svgview2.set_child_for_html("svg_tank_1_A");
+        |       svgview2.set_child_for_html("svg_tank_1_B");
+        |       svgview2.set_child_for_html("svg_tank_2");
+        |       svgview2.set_child_for_html("svg_tank_3");
+        |
+        |
+        |       let svg_tank_1_B = new Subtle.TimePlot("svg_tank_1_B", {smooth: true});
+        |       window.setInterval(function(){
+        |          svg_tank_1_B.update(Math.random()*0.7+0.25)
+        |       }, 100)
+        |
+        |       let svg_tank_2 = new Subtle.LinePlot("svg_tank_2", {values_x: [0,0.33,0.66,1], show_ticks: true, direction: "vertical", show_values: true, value_offset: 39})
+        |       svg_tank_2.update([0.2,-0.2,0.8,0]);
+        |
+        |       let svg_tank_3 = new Subtle.FillBar("svg_tank_3", {vertical: true, border_radius: 0})
+        |       svg_tank_3.update(0.8);
+        |    }
+        |    }
+        | );
+
+//
+h4 Params
+
+table.params-table
+    tr
+        td param
+        td type
+        td default
+        td description
+    tr
+        td img
+        td String
+        td ""
+        td Path to the svg file
+    tr
+        td onload
+        td Function()
+        td function(){}
+        td A function that executes when the svg file is loaded
+    tr
+        td stretch
+        td Boolean
+        td true
+        td Stretch the svg image size to fill the control
+    tr
+        td hover_effect
+        td Boolean
+        td true
+        td Changes the color of the active items slighltly when you hover over them.
+
+
+//
+h4 Update
+
+p.
+    You can add interactive elements to the svg
+    such as tooltips and onclick events. To do so,
+    the interactive elements must have a unique id
+    (within the scope of the html document). The id
+    of each element can be set by editing the xml
+    code of the svg file (using any text editor),
+    and you can group multiple elements using the
+    <code>&lt;g&gt;&lt;/g&gt;</code>
+    tag.
+
+p.
+    The following methods allow you to add interactive elements:
+
+ol
+    li
+        | Use <code>SvgView.set_child_color(element_id, color)</code> to change the color of an element.
+    li
+        | Use <code>SvgView.set_child_text(element_id, text)</code> to change the text of an element.
+    li
+        | Use <code>SvgView.set_child_onclick(element_id, onclick)</code> to set the onclick event on an element.
+    li
+        | Use <code>SvgView.set_child_bind(element1_id1, element2_id)</code> to bind two elements (so that the second element remains hidden until you hover on the first element).
+    li
+        | Use <code>SvgView.set_child_tooltip(element_id, tooltip)</code> to add a tooltip to an element (requires tippy.js and popper.js). The tooltip parameter can be html code.
+    li
+        | Use <code>SvgView.set_child_for_html(element_id)</code> to prepare an element to include other html controls. This is done using the <code>foreignObject</code> tag inside the svg. You have to be careful when creating your svg though, because any value of ViewBox that causes the svg to rescale will cause the elements inside the foreignObject to grow in size.

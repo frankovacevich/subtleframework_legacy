@@ -1,0 +1,179 @@
+h3#line_plot LinePlot
+
+p 
+    | Use 
+    code Subtle.LinePlot(object, params)
+    |  to display a line plot.
+    
+p
+    | A LinePlot can be oriented horizontally or vertically, 
+    | but in both cases the y values refer to the changing data 
+    | and the x values refer to the index data (for example, 
+    | if we want to represent the temperature at different dephts 
+    | in a tank, the y values would be the temperature and the
+    | x values would be the depth).
+
+//
+h4 Example
+
+div.h_layout(style="height:300px")
+    div#lineplot1(style="max-width:300px")
+    div#lineplot2(style="max-width:300px")
+
+script.
+    var lineplot1 = new Subtle.LinePlot("lineplot1",{values_x : [0.1,0.5,0.9], labels:["Alpha","Beta","Gamma"], ticks_minor:[-0.5, 0.5], show_labels:true, show_values:true, show_ticks:true});
+    var lineplot2 = new Subtle.LinePlot("lineplot2",{direction:"vertical", label_offset:100, value_offset:40, values_x : [0.1,0.5,0.9], labels:["Alpha","Beta","Gamma"], ticks_minor:[-0.5, 0.5], show_labels:true, show_values:true, show_ticks:true});
+    lineplot1.update([0.1,0.5,0.3]);
+    lineplot2.update([0.1,0.5,0.3]);
+    
+    
+pre 
+    code.block.javascript
+        | var lineplot1 = new Subtle.LinePlot("lineplot1",
+        |   {values_x : [0.1,0.5,0.9], 
+        |   labels:["Alpha","Beta","Gamma"], 
+        |   ticks_minor:[-0.5, 0.5], 
+        |   show_labels:true, 
+        |   show_values:true, show_ticks:true}
+        | );
+        |
+        | var lineplot2 = new Subtle.LinePlot("lineplot2",
+        |   {direction:"vertical", 
+        |   label_offset:100, 
+        |   value_offset:40, 
+        |   values_x : [0.1,0.5,0.9], 
+        |   labels:["Alpha","Beta","Gamma"], 
+        |   ticks_minor:[-0.5, 0.5], 
+        |   show_labels:true, 
+        |   show_values:true, 
+        |   show_ticks:true}
+        | );
+        |
+        | lineplot1.update([0.1,0.5,0.3]);
+        | lineplot2.update([0.1,0.5,0.3]);
+
+//
+h4 Params
+
+p The MultiTimePlot inherits all params from TimePlot, with the following differences:
+
+table.params-table
+    tr
+        td param
+        td type
+        td default
+        td description
+    tr
+        td y_min
+        td Number
+        td -1
+        td Minimum value for the "y" axis
+    tr
+        td y_max
+        td Number
+        td 1
+        td Maximum value for the "y" axis
+    tr
+        td x_min
+        td Number
+        td 0
+        td Minimum value for the "x" axis
+    tr
+        td x_max
+        td Number
+        td 1
+        td Maximum value for the "x" axis
+    tr
+        td values_x
+        td Array[Number]
+        td [0]
+        td An array with the values for the "x" axis
+    tr
+        td direction
+        td String ("horizontal" or "vertical")
+        td "horizontal"
+        td Direction of the line plot
+    tr
+        td show_grid
+        td Boolean
+        td true
+        td Displays the grid for the "x" axis
+    tr
+        td show_points
+        td Boolean
+        td true
+        td Displays points on each intersection
+    tr
+        td show_ticks
+        td Boolean
+        td true
+        td Displays ticks for the "y" axis
+    tr
+        td ticks_major
+        td Array[Number]
+        td [1, -1]
+        td Major ticks for the "y" axis
+    tr
+        td ticks_minor
+        td Array[Number]
+        td [0.2, -0.2]
+        td Minor ticks for the "y" axis
+    tr
+        td show_labels
+        td Boolean
+        td false
+        td Show labels for the "x" axis
+    tr
+        td label_offset
+        td Number
+        td 30
+        td Offset for the labels on the "x" axis
+    tr
+        td labels
+        td Array[String]
+        td [""]
+        td Set custom labels for the "x" axis
+    tr
+        td show_values
+        td Boolean
+        td false
+        td Show values on the "x" axis
+    tr
+        td value_offset
+        td Number
+        td 30
+        td Offset for the values on the "x" axis
+    tr
+        td color
+        td String (from Subtle.COLORS, hex or rgb)
+        td COLORS['primary']
+        td Line color
+    tr
+        td stroke_width
+        td Number
+        td 2
+        td Line width
+    tr
+        td grid_stroke_width
+        td Number
+        td 1
+        td Grid's line width
+
+    
+
+//
+h4 Update
+
+p.
+    Call the update method with an array [value1, value2, ...] to update the control.
+
+code
+    | Subtle.LinePlot.update([value1, value2, ...])
+
+p.
+    You can also pass a single value and the index
+
+code
+    | Subtle.LinePlot.update(value, index)
+
+

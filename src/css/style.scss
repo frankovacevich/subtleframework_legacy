@@ -1,0 +1,114 @@
+// =============================================================================
+// CONSTANTS
+// =============================================================================
+$color_primary: #00baff;
+$color_secondary: #00baff;
+$color_disabled: #555;
+
+// =============================================================================
+// IMPORTS
+// =============================================================================
+@import 'controls/controls.scss';
+//@import 'form_controls/switch.scss';
+//@import 'form_controls/checkbox.scss';
+//@import 'form_controls/radio_button.scss';
+//@import 'form_controls/select.scss';
+//@import 'form_controls/button.scss';
+//@import 'form_controls/slider.scss';
+@import 'form_controls/floating_button.scss';
+@import 'grid/grid.scss';
+@import 'grid/sidebarnav.scss';
+@import 'report/report.scss';
+@import 'subtleicons.scss';
+
+// =============================================================================
+// DEFAULT STYLES
+// =============================================================================
+body, html { margin: 0 ;  height: 100%; width: 100%; overflow-x: hidden; box-sizing: border-box;}
+svg{ display: block; }
+.js-plotly-plot svg{ display: inline; }
+div.plotly-notifier { visibility: hidden; }
+
+// =============================================================================
+// FONTS
+// =============================================================================
+
+@font-face { font-family: 'at_font'; src: url('fonts/DIN.ttf'); }
+
+.font_body{ font-size: 1rem; }
+.at_font{ font-family: "at_font"; font-size: 36px; }
+.font_mono{ font-family: monospace; font-size: 20px; }
+
+.text_small{ font-size: 1rem }
+.text_medium{ font-size: 2rem }
+.text_large{ font-size: 3rem }
+
+body{ @extend .font_body; }
+input{ @extend .font_body; }
+select{ @extend .font_body; }
+
+h1, h2, h3, h4, h5, h6{ font-family: "at_font"; }
+
+// =============================================================================
+// COLORS (dark mode default)
+// =============================================================================
+//body{ background-color: #121212 ; color: white; }
+body{ background-color: white ; color: black; }
+
+
+
+// =============================================================================
+// SCROLLBAR
+// =============================================================================
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: transparent;  }
+::-webkit-scrollbar-thumb { background: #888; border-radius: 5px;}
+::-webkit-scrollbar-thumb:hover { background: #555; }
+body { scrollbar-color: #888 transparent; scrollbar-width: thin; }
+
+
+// =============================================================================
+// NO SELECTABLE
+// =============================================================================
+.no-selectable{ -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+
+// =============================================================================
+// TOOLTIP
+// =============================================================================
+/*
+.ttip {
+  position: relative;
+  display: inline-block;
+}
+
+.ttip>span {
+  visibility: hidden;
+  width: auto;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 4px;
+  padding: 10px;
+  position: absolute;
+  z-index: 99;
+  bottom: 150%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: block;
+  white-space: nowrap;
+}
+
+.ttip>span::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+.ttip:hover>span {
+  visibility: visible;
+}*/

@@ -1,0 +1,81 @@
+h3#scatter Scatter plot
+
+p.
+    Use <code>Subtle.PlotlyObject.add_scatter(data, params)</code> to add a scatter
+    plot to a plotly object.
+
+div#plotly_scatter(style="width:100%; height:400px")
+
+script.
+    var plotly_scatter = new Subtle.PlotlyObject("plotly_scatter", {});
+    plotly_scatter.add_scatter([[1,2,3,4], [7,5,6,8]], {show_markers: true});
+    plotly_scatter.draw();
+
+pre
+    code.block.javascript.
+        var plotly_scatter = new PlotlyObject("plotly_scatter", {});
+        plotly_scatter.add_scatter([[1,2,3,4], [7,5,6,8]], {show_markers: true});
+        plotly_scatter.draw();
+
+table.params-table
+    tr
+        td param
+        td type
+        td default
+        td description
+    tr
+        td name
+        td String
+        td ""
+        td Series name (used for the legend)
+    tr
+        td color
+        td String (from Subtle.COLORS, hex or rgb)
+        td COLORS['primary']
+        td Plot color
+    tr
+        td show_markers
+        td Boolean
+        td false
+        td Show/Hide markers
+    tr
+        td show_lines
+        td Boolean
+        td true
+        td Show/hide lines
+    tr
+        td plot_area
+        td Boolean
+        td false
+        td Fill area below the graph
+    tr
+        td plot_manhattan
+        td Boolean
+        td false
+        td Join points with horizontal and vertical lines
+    tr
+        td plot_spline
+        td Boolean
+        td false
+        td Join points with smooth curves
+    tr
+        td line_stroke
+        td Number
+        td 2
+        td Line width
+    tr
+        td marker_symbol
+        td String ("circle", "square", "diamond", "cross", "x", "triangle-up", "triangle-down")
+        td "circle"
+        td.
+            Marker symbol (<a href="https://plotly.com/python/marker-style/">more</a>)
+    tr
+        td marker_size
+        td Number
+        td 6
+        td Marker size
+    tr
+        td zindex
+        td Number
+        td 0
+        td Index to place the plot above or below other traces.

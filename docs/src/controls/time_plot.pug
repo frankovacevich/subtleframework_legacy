@@ -1,0 +1,154 @@
+h3#time_plot Time Plot
+
+p 
+    | Use 
+    code Subtle.TimePlot(object, params)
+    |  to display time series.
+
+//
+h4 Example
+
+div.h_layout(style="height:250px")
+    div#timeplot(style="max-width:500px")
+
+script.
+    var timeplot = new Subtle.TimePlot("timeplot", {limit_high:0.8, limit_low:0.2, show_labels:true, endpoint: true});
+    window.setInterval(function(){
+        timeplot.update(Math.random()*0.25+0.5);
+    }, 500);
+    
+pre 
+    code.block.javascript
+        | var timeplot = new Subtle.TimePlot("timeplot", 
+        |    {limit_high:0.8, 
+        |    limit_low:0.2, 
+        |    show_labels:true, 
+        |    endpoint: true}
+        | );
+        |
+        | window.setInterval(function(){
+        |     timeplot.update(Math.random()*0.25+0.5);
+        | }, 500);
+
+//
+h4 Params
+
+p The historic gauge is derived from the normal gauge, and thus has all it's params, with differences on the following:
+
+table.params-table
+    tr
+        td param
+        td type
+        td default
+        td description
+    tr
+        td y_min
+        td Number
+        td -0.25
+        td Minimum value
+    tr
+        td y_max
+        td Number
+        td 0.25
+        td Maximum value
+    tr
+        td time_span
+        td Number
+        td 10
+        td Length of the time span displayed (in seconds)
+    tr
+        td units
+        td String
+        td ""
+        td Units to display on the labels
+    tr
+        td limit_high
+        td Number
+        td NaN
+        td Show a 'danger zone' for high values (if NaN it's not shown)
+    tr
+        td limit_low
+        td Number
+        td NaN
+        td Show a 'danger zone' for low values (if NaN it's not shown)
+    tr
+        td shade_limits
+        td Boolean
+        td false
+        td Displays limit_high and limit_low as a zone rather than lines
+    tr
+        td y_auto
+        td Boolean
+        td false
+        td Sets the y_min and y_max automatically based on the update values.
+    tr
+        td color
+        td String (from Subtle.COLORS, hex or rgb)
+        td COLORS['primary']
+        td Line color
+    tr
+        td stroke_width
+        td Number
+        td 3
+        td Stroke width
+    tr
+        td show_labels
+        td Boolean
+        td false
+        td Show labels on the plot
+    tr
+        td left_offset
+        td Number
+        td 0
+        td Horizontal offset (in pixels) on the left of the plot
+    tr
+        td right_offset
+        td Number
+        td 3
+        td Horizontal offset (in pixels) on the right of the plot
+    tr
+        td value_on_left
+        td Boolean
+        td false
+        td Shows the value as a big label on the left
+    tr
+        td override_text_left
+        td String
+        td ""
+        td Display's a custom text on the left of the plot
+    tr
+        td endpoint
+        td Boolean
+        td false
+        td Draws a circle at the end
+    tr
+        td fade
+        td Boolean
+        td false
+        td Makes the plot line fade to the left
+    tr
+        td glow
+        td Boolean
+        td false
+        td Draws a glowing line
+    tr
+        td smooth
+        td Boolean
+        td false
+        td Updates the control constantly, giving a smooth appeareance
+    
+
+//
+h4 Update
+
+p.
+    Call the update method with the new value to update the control
+
+code
+    | Subtle.TimePlot.update(value, time = "")
+
+p.
+    Here the time can be specified as an ISO string (YYYY-MM-DD HH:MM:SS) or as a javascript Date
+    (the default value, an empty string, means that the value passed corresponds to the present time).
+
+

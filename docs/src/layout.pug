@@ -1,0 +1,19 @@
+html
+    head
+        include head/head.pug
+    body
+        include head/toc.pug
+
+        h2#layout Layout
+
+        p.
+            Almost all front-end frameworks provide ways to design a layout. Subtleframe includes some basic elements to create layouts for
+            Dashboards and Deports.
+
+        include layout/grid.pug
+        include layout/panels.pug
+        include layout/hvlayout.pug
+        include layout/tabs.pug
+        include layout/reports.pug
+
+        div(style="height:100px")

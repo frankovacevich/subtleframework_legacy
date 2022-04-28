@@ -1,0 +1,417 @@
+<html><head><meta content="text/html;charset=utf-8" http-equiv="Content-Type"/><meta content="utf-8" http-equiv="encoding"/><script src="https://cdn.plot.ly/plotly-latest.min.js"></script><script src="../dist/js/subtleframe.js"></script><script src="js/highlight.js"></script><script src="https://unpkg.com/@popperjs/core@2"></script><script src="https://unpkg.com/tippy.js@6"></script><script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script><script>hljs.initHighlightingOnLoad();
+</script><link rel="stylesheet" type="text/css" media="screen" href="../dist/css/subtleframe.css"/><link rel="stylesheet" type="text/css" media="screen" href="css/docstyle.css"/><link rel="stylesheet" type="text/css" media="screen" href="css/highlight.css"/><link rel="shortcut icon" href="img/subtle.svg"/><link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/><title>Subtleframe Docs</title></head><body><div class="sidebar"><div class="title"><i class="icon-subtle" style="font-size: 50px"></i><br/><br/><div>Subtleframe</div><p>v0.1</p></div><a class="item" href="index.html">Getting started</a><a class="item" href="examples.html">Examples</a><a class="item" href="colors.html">Colors</a><a class="item" href="icons.html">Icons</a><a class="item" href="layout.html">Layout</a><a class="sub item" href="layout.html#grid">Grid</a><a class="sub item" href="layout.html#panels">Panels</a><a class="sub item" href="layout.html#horizontal_vertical_layout">Horizontal and vertical layout</a><a class="sub item" href="layout.html#tabs">Tabs layout</a><a class="sub item" href="layout.html#reports">Reports</a><a class="item" href="controls.html">Controls</a><a class="sub item" href="controls.html#text_simple">Text Simple</a><a class="sub item" href="controls.html#gauge">Gauge</a><a class="sub item" href="controls.html#gauge_historic">Historic Gauge</a><a class="sub item" href="controls.html#scale">Scale</a><a class="sub item" href="controls.html#time_plot">Time plot</a><a class="sub item" href="controls.html#multi_time_plot">Multi time plot</a><a class="sub item" href="controls.html#sparkline">Sparkline</a><a class="sub item" href="controls.html#gantt_chart">Gnatt chart</a><a class="sub item" href="controls.html#line_plot">Lineplot</a><a class="sub item" href="controls.html#web_plot">Webplot</a><a class="sub item" href="controls.html#logger">Logger</a><a class="sub item" href="controls.html#svg_view">Svg view</a><a class="sub item" href="controls.html#map_view">Map view</a><a class="sub item" href="controls.html#table">Table</a><a class="sub item" href="controls.html#treeview">Tree view</a><a class="item" href="plotly.html">Plotly helpers</a><a class="sub item" href="plotly.html#scatter">Scatter plot</a><a class="sub item" href="plotly.html#column">Column chart</a><a class="sub item" href="plotly.html#pie">Pie chart</a><a class="sub item" href="plotly.html#boxes">Box and whiskers plot</a><a class="sub item" href="plotly.html#histogram">Histogram</a><a class="sub item" href="plotly.html#heatmap">Heatmap</a><a class="sub item" href="plotly.html#text">Text</a></div><!--///////////////////////////////////////////////////--><h2 id="controls">Controls</h2><h3 id="text_simple">Text simple</h3><p> Use <code>Subtle.TextSimple(object, params)</code> to display a single value as a label</p><!----><h4>Example</h4><div class="h_layout" style="height:150px"><div id="text_simple1" style="max-width:200px"></div><div id="text_simple2" style="max-width:200px"></div><div id="text_simple3" style="max-width:200px"></div></div><script>var text_simple1 = new Subtle.TextSimple("text_simple1", {units:""});
+var text_simple2 = new Subtle.TextSimple("text_simple2", {units:"L"});
+var text_simple3 = new Subtle.TextSimple("text_simple3", {units:"kcal"});
+
+text_simple1.update(250);
+text_simple2.update(1.25684);
+text_simple3.update(1250);
+</script><pre> <code class="block javascript">var text_simple1 = new Subtle.TextSimple("text_simple1", {units:""});
+var text_simple2 = new Subtle.TextSimple("text_simple2", {units:"L"});
+var text_simple3 = new Subtle.TextSimple("text_simple3", {units:"kcal"});
+
+text_simple1.update(250);
+text_simple2.update(1.25684);
+text_simple3.update(1250);</code></pre><!----><h4>Params</h4><table class="params-table"><tr><td>param</td><td>type</td><td>default</td><td>description</td></tr><tr><td>value</td><td>Number / String</td><td>0</td><td>Initial value</td></tr><tr><td>units</td><td>String</td><td>""</td><td>Units</td></tr><tr><td>v_align</td><td>String ("top", "center", "bottom")</td><td>"center"</td><td>Vertical alignment</td></tr><tr><td>h_align</td><td>String ("left", "center", "right")</td><td>"center"</td><td>Horizontal alignment</td></tr><tr><td>rounding</td><td>Number</td><td>2</td><td>Decimal position for rounding</td></tr><tr><td>font_size</td><td>Number</td><td>36</td><td>Font size (in pixels)</td></tr></table><!----><h4>Update</h4><p>Call the update method with the new value to update the control
+</p><code>Subtle.TextSimple.update(text)</code><h3 id="gauge">Gauge</h3><p> Use <code>Subtle.Gauge(object, params)</code> to display a simple gauge</p><!----><h4>Example</h4><div class="h_layout" style="height:150px"><div id="gauge1" style="max-width:200px"></div><div id="gauge2" style="max-width:200px"></div><div id="gauge3" style="max-width:200px"></div><div id="gauge4" style="max-width:200px"></div></div><script>var gauge1 = new Subtle.Gauge("gauge1", {limit_high: 0.8, limit_low: 0.2});
+var gauge2 = new Subtle.Gauge("gauge2", {show_hand: true, linecap: "butt"});
+var gauge3 = new Subtle.Gauge("gauge3", {opening_angle: 0.3, units:"km/h", show_hand: false, inner_padding: 3});
+var gauge4 = new Subtle.Gauge("gauge4", {opening_angle: 1, show_hand: false, dial_offset:3.1415, units:"PSI", linecap: "butt"});
+
+gauge1.update(0.1);
+gauge2.update(0.5);
+gauge3.update(0.9);
+gauge4.update(0.35);
+</script><pre> <code class="block javascript">var gauge1 = new Subtle.Gauge("gauge1", 
+   {limit_high: 0.8, limit_low: 0.2});
+var gauge2 = new Subtle.Gauge("gauge2", 
+   {show_hand: true, linecap: "butt"});
+var gauge3 = new Subtle.Gauge("gauge3", 
+   {opening_angle: 0.3, 
+   units:"km/h", 
+   show_hand: false, 
+   inner_padding: 3}
+);
+var gauge4 = new Subtle.Gauge("gauge4", 
+   {opening_angle: 1, 
+   show_hand: false, 
+   dial_offset:3.1415, 
+   units:"PSI", 
+   linecap: "butt"}
+);
+
+gauge1.update(0.1);
+gauge2.update(0.5);
+gauge3.update(0.9);
+gauge4.update(0.35);</code></pre><!----><h4>Params</h4><table class="params-table"><tr><td>param</td><td>type</td><td>default</td><td>description</td></tr><tr><td>max_val</td><td>Number</td><td>1</td><td>Maximum value</td></tr><tr><td>min_value</td><td>Number</td><td>0</td><td>Minimum value</td></tr><tr><td>units</td><td>String</td><td>""</td><td>Units to display</td></tr><tr><td>stroke_width</td><td>Number</td><td>10</td><td>Width of the gauge's border</td></tr><tr><td>color</td><td>String (from Subtle.COLORS, hex or rgb)</td><td>COLORS['primary']</td><td>Main color</td></tr><tr><td>background_color</td><td>String (from Subtle.COLORS, hex or rgb)</td><td>COLORS['control']</td><td>Background color</td></tr><tr><td>hand_color</td><td>String (from Subtle.COLORS, hex or rgb)</td><td>COLORS['control']</td><td>Hand color</td></tr><tr><td>inner_padding</td><td>Number</td><td>0</td><td>Makes the width of the gauge's bar thinner.</td></tr><tr><td>show_label</td><td>Boolean</td><td>true</td><td>Shows a label with the value</td></tr><tr><td>show_hand</td><td>Boolean</td><td>true</td><td>Shows the hand</td></tr><tr><td>linecap</td><td>String ("round", "butt")</td><td>"round"</td><td>Makes the gauge's endings round or square</td></tr><tr><td>opening_angle</td><td>Number</td><td>0.5</td><td>The angle of the opening, from 0 (180 degree's arc) to 1 (full circle)</td></tr><tr><td>override_label</td><td>String</td><td>""</td><td>A string to override the label's value</td></tr><tr><td>dial_offset</td><td>Number</td><td>0</td><td>An angle (in radians) to shift where the gauge bar begins</td></tr><tr><td>background_fill</td><td>String</td><td>""</td><td>Background color to fill the inner part of the gauge</td></tr><tr><td>font_size</td><td>Number</td><td>36</td><td>Label's font size</td></tr><tr><td>limit_high</td><td>Number</td><td>NaN</td><td>Displays a 'danger zone' for high values (if NaN it's not shown)</td></tr><tr><td>limit_low</td><td>Number</td><td>NaN</td><td>Displays a 'danger zone' for low values (if NaN it's not shown)</td></tr></table><!----><h4>Update</h4><p>Call the update method with the new value to update the control
+</p><code>Subtle.Gauge.update(value)</code><h3 id="gauge_historic">Historic Gauge</h3><p> Use <code>Subtle.GaugeAdv(object, params)</code> to display a gauge that also shows a range of historical values.</p><!----><h4>Example</h4><div class="h_layout" style="height:150px"><div id="gaugeh" style="max-width:200px"></div></div><script>var gaugeh = new Subtle.GaugeHistoric("gaugeh", {});
+window.setInterval(function(){
+    gaugeh.update(Math.random()*0.25+0.5);
+}, 500);
+</script><pre> <code class="block javascript">var gaugeh = new Subtle.GaugeHistoric("gaugeh", {});
+window.setInterval(function(){
+    gaugeh.update(Math.random()*0.25+0.5);
+}, 500);</code></pre><!----><h4>Params</h4><p>The historic gauge is derived from the normal gauge, and thus has all it's params, with differences on the following:</p><table class="params-table"><tr><td>param</td><td>type</td><td>default</td><td>description</td></tr><tr><td>inner_padding</td><td>Number</td><td>3</td><td>Makes the width of the gauge's bar thinner.</td></tr><tr><td>history_length</td><td>Number</td><td>3600</td><td>Determines for how long (in seconds) the gauge stores the values to display the range.</td></tr></table><!----><h4>Update</h4><p>Call the update method with the new value to update the control
+</p><code>Subtle.GaugeHistoric.update(value, time = "")</code><p>Here the time can be specified as an ISO string (YYYY-MM-DD HH:MM:SS) or as a javascript Date
+(the default value, an empty string, means that the value passed corresponds to the present time).</p><h3 id="fillbar">FillBar</h3><p> Use <code>Subtle.Fillbar(object, params)</code> to display vertical or horizontal bar</p><!----><h4>Example</h4><div class="h_layout" style="height:150px"><div id="fillbar1" style="max-width:200px"></div><div id="fillbar2" style="max-width:200px"></div><div id="fillbar3" style="max-width:200px"></div><div id="fillbar4" style="max-width:200px"></div><div id="fillbar5" style="max-width:200px"></div></div><script>var fillbar1 = new Subtle.FillBar("fillbar1", {});
+var fillbar2 = new Subtle.FillBar("fillbar2", {vertical:true});
+var fillbar3 = new Subtle.FillBar("fillbar3", {vertical:true, smooth: true});
+var fillbar4 = new Subtle.FillBar("fillbar4", {units:" %", max_val:100, min_val: 0});
+var fillbar5 = new Subtle.FillBar("fillbar5", {vertical: true, show_label: false});
+
+fillbar1.update(0.3);
+fillbar4.update(45);
+fillbar5.update(0.5);
+window.setInterval(function(){
+    let x = Math.random()/4+0.5;
+    fillbar2.update(x);
+    fillbar3.update(x);
+},250);
+</script><pre> <code class="block javascript">var fillbar1 = new Subtle.FillBar("fillbar1", {});
+var fillbar2 = new Subtle.FillBar("fillbar2", {vertical:true});
+var fillbar3 = new Subtle.FillBar("fillbar3", {vertical:true, smooth: true});
+var fillbar4 = new Subtle.FillBar("fillbar4", {units:" %", max_val:100, min_val: 0});
+var fillbar5 = new Subtle.FillBar("fillbar5", {vertical: true, show_label: false});
+
+fillbar1.update(0.3);
+fillbar4.update(45);
+fillbar5.update(0.5);
+window.setInterval(function(){
+    let x = Math.random()/4+0.5;
+    fillbar2.update(x);
+    fillbar3.update(x);
+},250);</code></pre><!----><h4>Params</h4><p>The historic gauge is derived from the normal gauge, and thus has all it's params, with differences on the following:</p><table class="params-table"><tr><td>param</td><td>type</td><td>default</td><td>description</td></tr><tr><td>max_val</td><td>Number</td><td>1</td><td>Maximum value</td></tr><tr><td>min_val</td><td>Number</td><td>0</td><td>Minimum value</td></tr><tr><td>vertical</td><td>Boolean</td><td>false</td><td>Make the bar vertical (true) or horizontal (false)</td></tr><tr><td>color</td><td>String (from Subtle.COLORS, hex or rgb)</td><td>COLORS['primary']</td><td>Main color</td></tr><tr><td>smooth</td><td>Boolean</td><td>false</td><td>Makes a smooth transition between updates</td></tr><tr><td>border_radius</td><td>Number</td><td>10</td><td>Bar's border radius (in pixels)</td></tr><tr><td>bar_width</td><td>Number</td><td>30</td><td>Bar's width (in pixels)</td></tr><tr><td>font_size</td><td>Number</td><td>15</td><td>Label's font size</td></tr><tr><td>show_label</td><td>Boolean</td><td>true</td><td>Shows a label with the value inside the bar</td></tr><tr><td>units</td><td>String</td><td>""</td><td>Shows units on the label</td></tr><tr><td>rounding</td><td>Number</td><td>2</td><td>Decimal place for rounding</td></tr></table><!----><h4>Update</h4><p>Call the update method with the new value to update the control
+</p><code>Subtle.Fillbar.update(value)</code><h3 id="scale">Scale</h3><p> Use <code>Subtle.Scale(object, params)</code>to display a more advanced bar, with an indicator and a range of historical values</p><!----><h4>Example</h4><div class="h_layout" style="height:150px"><div id="scale1" style="max-width:200px"></div><div id="scale2" style="max-width:200px"></div><div id="scale3" style="max-width:200px"></div><div id="scale4" style="max-width:200px"></div><div id="scale5" style="max-width:200px"></div></div><script>var scale1 = new Subtle.Scale("scale1", {});
+var scale2 = new Subtle.Scale("scale2", {vertical:true, limit_high:0.8, limit_low:0.2, ticks:[0.2, 0.5, 0.8]});
+
+window.setInterval(function(){
+    scale1.update(Math.random()*0.25+0.5);
+    scale2.update(Math.random()*0.25+0.5);
+}, 500);
+</script><pre> <code class="block javascript">var scale1 = new Subtle.Scale("scale1", {});
+var scale2 = new Subtle.Scale("scale2", 
+   {vertical:true, 
+   limit_high:0.8, 
+   limit_low:0.2, 
+   ticks:[0.2, 0.5, 0.8]}
+);
+ 
+window.setInterval(function(){
+    scale1.update(Math.random()*0.25+0.5);
+    scale2.update(Math.random()*0.25+0.5);
+}, 500); </code></pre><!----><h4>Params</h4><p>The historic gauge is derived from the normal gauge, and thus has all it's params, with differences on the following:</p><table class="params-table"><tr><td>param</td><td>type</td><td>default</td><td>description</td></tr><tr><td>inner_padding</td><td>Number</td><td>3</td><td>Makes the width of the gauge's bar thinner.</td></tr><tr><td>history_length</td><td>Number</td><td>3600</td><td>Determines for how long (in seconds) the gauge stores the values to display the range.</td></tr></table><!----><h4>Update</h4><p>Call the update method with the new value to update the control
+</p><code>Subtle.Scale.update(value, time = "")</code><p>Here the time can be specified as an ISO string (YYYY-MM-DD HH:MM:SS) or as a javascript Date
+(the default value, an empty string, means that the value passed corresponds to the present time).</p><h3 id="time_plot">Time Plot</h3><p> Use <code>Subtle.TimePlot(object, params)</code> to display time series.</p><!----><h4>Example</h4><div class="h_layout" style="height:250px"><div id="timeplot" style="max-width:500px"></div></div><script>var timeplot = new Subtle.TimePlot("timeplot", {limit_high:0.8, limit_low:0.2, show_labels:true, endpoint: true});
+window.setInterval(function(){
+    timeplot.update(Math.random()*0.25+0.5);
+}, 500);
+</script><pre> <code class="block javascript">var timeplot = new Subtle.TimePlot("timeplot", 
+   {limit_high:0.8, 
+   limit_low:0.2, 
+   show_labels:true, 
+   endpoint: true}
+);
+
+window.setInterval(function(){
+    timeplot.update(Math.random()*0.25+0.5);
+}, 500);</code></pre><!----><h4>Params</h4><p>The historic gauge is derived from the normal gauge, and thus has all it's params, with differences on the following:</p><table class="params-table"><tr><td>param</td><td>type</td><td>default</td><td>description</td></tr><tr><td>y_min</td><td>Number</td><td>-0.25</td><td>Minimum value</td></tr><tr><td>y_max</td><td>Number</td><td>0.25</td><td>Maximum value</td></tr><tr><td>time_span</td><td>Number</td><td>10</td><td>Length of the time span displayed (in seconds)</td></tr><tr><td>units</td><td>String</td><td>""</td><td>Units to display on the labels</td></tr><tr><td>limit_high</td><td>Number</td><td>NaN</td><td>Show a 'danger zone' for high values (if NaN it's not shown)</td></tr><tr><td>limit_low</td><td>Number</td><td>NaN</td><td>Show a 'danger zone' for low values (if NaN it's not shown)</td></tr><tr><td>shade_limits</td><td>Boolean</td><td>false</td><td>Displays limit_high and limit_low as a zone rather than lines</td></tr><tr><td>y_auto</td><td>Boolean</td><td>false</td><td>Sets the y_min and y_max automatically based on the update values.</td></tr><tr><td>color</td><td>String (from Subtle.COLORS, hex or rgb)</td><td>COLORS['primary']</td><td>Line color</td></tr><tr><td>stroke_width</td><td>Number</td><td>3</td><td>Stroke width</td></tr><tr><td>show_labels</td><td>Boolean</td><td>false</td><td>Show labels on the plot</td></tr><tr><td>left_offset</td><td>Number</td><td>0</td><td>Horizontal offset (in pixels) on the left of the plot</td></tr><tr><td>right_offset</td><td>Number</td><td>3</td><td>Horizontal offset (in pixels) on the right of the plot</td></tr><tr><td>value_on_left</td><td>Boolean</td><td>false</td><td>Shows the value as a big label on the left</td></tr><tr><td>override_text_left</td><td>String</td><td>""</td><td>Display's a custom text on the left of the plot</td></tr><tr><td>endpoint</td><td>Boolean</td><td>false</td><td>Draws a circle at the end</td></tr><tr><td>fade</td><td>Boolean</td><td>false</td><td>Makes the plot line fade to the left</td></tr><tr><td>glow</td><td>Boolean</td><td>false</td><td>Draws a glowing line</td></tr><tr><td>smooth</td><td>Boolean</td><td>false</td><td>Updates the control constantly, giving a smooth appeareance</td></tr></table><!----><h4>Update</h4><p>Call the update method with the new value to update the control
+</p><code>Subtle.TimePlot.update(value, time = "")</code><p>Here the time can be specified as an ISO string (YYYY-MM-DD HH:MM:SS) or as a javascript Date
+(the default value, an empty string, means that the value passed corresponds to the present time).</p><h3 id="multi_time_plot">MultiTimePlot</h3><p> Use <code>Subtle.MultiTimePlot(object, params)</code> to display small time plot with multiple series</p><!----><h4>Example</h4><div class="h_layout" style="height:200px"><div id="multitimeplot" style="max-width:500px"></div></div><script>var multitimeplot = new Subtle.MultiTimePlot("multitimeplot", {limit_high:0.8, limit_low:0.2, show_labels:true,  shade_limits: true, y_min: 0, y_max: 1, right_offset: 0} );
+var mt = 0;
+window.setInterval(function(){
+    multitimeplot.update({
+        "A": Math.sin(mt*0.1)*0.2+0.5,
+        "B": Math.sin(mt*0.1+2.1)*0.2+0.5,
+        "C": Math.sin(mt*0.1+4.2)*0.2+0.5,
+    });
+    mt += 1;
+}, 50);
+
+</script><pre> <code class="block javascript">var multitimeplot = new Subtle.MultiTimePlot("multitimeplot", 
+    {limit_high:0.8, 
+    limit_low:0.2, 
+    show_labels:true,  
+    shade_limits: true, 
+    y_min: 0, 
+    y_max: 1, 
+    right_offset: 0}
+);
+ 
+var mt = 0;
+window.setInterval(function(){
+    multitimeplot.update({
+        "A": Math.sin(mt*0.1)*0.2+0.5,
+        "B": Math.sin(mt*0.1+2.1)*0.2+0.5,
+        "C": Math.sin(mt*0.1+4.2)*0.2+0.5,
+    });
+    mt += 1;
+}, 50);</code></pre><!----><h4>Params</h4><p>The MultiTimePlot inherits all params from TimePlot, with the following differences:</p><table class="params-table"><tr><td>param</td><td>type</td><td>default</td><td>description</td></tr><tr><td>labels</td><td>Array[String]</td><td>["A", "B", "C"]</td><td>The labels for the time plot series</td></tr><tr><td>colors</td><td>Array[String]</td><td>Subtle.COLOR_PALLETES["main"]</td><td>An array with the colors for each of the series of the plot</td></tr></table><!----><h4>Update</h4><p>Call the update method with an object {serie: value} to update the control. You do not need to
+include all series, only the ones you want to update.
+</p><code>Subtle.MultiTimePlot.update({"A" : value, "B" : value, ...}, time = "")</code><p>Here the time can be specified as an ISO string (YYYY-MM-DD HH:MM:SS) or as a javascript Date
+(the default value, an empty string, means that the value passed corresponds to the present time).</p><h3 id="sparkline">Sparkline</h3><p> Use <code>Subtle.Sparkline(object, params)</code> to display small time plot</p><!----><h4>Example</h4><div class="h_layout" style="height:50px"><div id="sparkline1" style="max-width:100px"></div><div id="sparkline2" style="max-width:100px"></div><div id="sparkline3" style="max-width:100px"></div><div id="sparkline4" style="max-width:100px"></div></div><script>var sparkline1 = new Subtle.Sparkline("sparkline1", {color:Subtle.COLOR_PALETTES["alternative"][0]});
+var sparkline2 = new Subtle.Sparkline("sparkline2", {color:Subtle.COLOR_PALETTES["alternative"][1]});
+var sparkline3 = new Subtle.Sparkline("sparkline3", {color:Subtle.COLOR_PALETTES["alternative"][2]});
+var sparkline4 = new Subtle.Sparkline("sparkline4", {color:Subtle.COLOR_PALETTES["alternative"][3]});
+window.setInterval(function(){
+    sparkline1.update(Math.random());
+    sparkline2.update(Math.random());
+    sparkline3.update(Math.random());
+    sparkline4.update(Math.random());
+}, 200);
+
+</script><pre> <code class="block javascript">var sparkline1 = new Subtle.Sparkline("sparkline1", 
+  {color:Subtle.COLOR_PALETTES["alternative"][0]});
+var sparkline2 = new Subtle.Sparkline("sparkline2", 
+  {color:Subtle.COLOR_PALETTES["alternative"][1]});
+var sparkline3 = new Subtle.Sparkline("sparkline3", 
+  {color:Subtle.COLOR_PALETTES["alternative"][2]});
+var sparkline4 = new Subtle.Sparkline("sparkline4", 
+  {color:Subtle.COLOR_PALETTES["alternative"][3]});
+
+window.setInterval(function(){
+    sparkline1.update(Math.random()*0.25+0.5);
+    sparkline2.update(Math.random()*0.25+0.5);
+    sparkline3.update(Math.random()*0.25+0.5);
+    sparkline4.update(Math.random()*0.25+0.5);
+}, 500);</code></pre><!----><h4>Params</h4><p>The sparkline inherits all params from TimePlot, with the following differences:</p><table class="params-table"><tr><td>param</td><td>type</td><td>default</td><td>description</td></tr><tr><td>fade</td><td>Boolean</td><td>true</td><td>Makes the plot line fade to the left</td></tr><tr><td>endpoint</td><td>Boolean</td><td>true</td><td>Draws a circle at the end</td></tr></table><!----><h4>Update</h4><p>Call the update method with the new value to update the control
+</p><code>Subtle.GaugeHistoric.update(value, time = "")</code><p>Here the time can be specified as an ISO string (YYYY-MM-DD HH:MM:SS) or as a javascript Date
+(the default value, an empty string, means that the value passed corresponds to the present time).</p><h3 id="gantt_chart">Gantt Chart</h3><p> Use <code>Subtle.GanttChart(object, params)</code> to display a gantt chart</p><!----><h4>Example</h4><div class="v_layout" style="height:150px"><div id="gantt" style="max-width:500px"></div></div><script>var gantt = new Subtle.GanttChart("gantt",{labels:["A","B","C"], show_status_on_label: true, left_margin: 30});
+window.setInterval(function(){
+    gantt.update({"A":Math.random() > 0.1});
+    gantt.update({"B":Math.random() > 0.5});
+    gantt.update({"C":Math.random() > 0.8});
+},5000);
+</script><pre> <code class="block javascript">var gantt = new Subtle.GanttChart("gantt",
+   {labels:["A","B","C"], 
+   show_status_on_label: true, 
+   left_margin: 30}
+);
+ 
+window.setInterval(function(){
+    gantt.update({"A":Math.random() > 0.1});
+    gantt.update({"B":Math.random() > 0.5});
+    gantt.update({"C":Math.random() > 0.8});
+},5000);</code></pre><!----><h4>Params</h4><table class="params-table"><tr><td>param</td><td>type</td><td>default</td><td>description</td></tr><tr><td>labels</td><td>Array[String]</td><td>["serie1", "serie2"]</td><td>Labels for the gantt series</td></tr><tr><td>time_unit</td><td>String ("s", "m" or "h")</td><td>"s"</td><td>Time unit (seconds, minutes or hours)</td></tr><tr><td>time_span</td><td>Number</td><td>100</td><td>Time span</td></tr><tr><td>time_grid</td><td>Number</td><td>5</td><td>Number of time divisions</td></tr><tr><td>show_labels</td><td>Boolean</td><td>true</td><td>Show the labels for the series on the left</td></tr><tr><td>show_time_inside_bar</td><td>Boolean</td><td>true</td><td>Show the duration of each period inside the bar of the gantt</td></tr><tr><td>left_margin</td><td>Number</td><td>100</td><td>Left margin (in pixels) for the labels</td></tr><tr><td>smooth</td><td>Boolean</td><td>true</td><td>Updates the chart automatically so it looks smooth</td></tr><tr><td>color</td><td>String or Array[String]</td><td>COLORS['primary']</td><td>Main color. If it's a single string, all bars will have the same color. If it's an array, each bar will have the corresponding color.</td></tr><tr><td>bar_size</td><td>Number (0 to 1)</td><td>0.9</td><td>Bar size from 0 (no space in between bars) to 1 (bars of height "0")</td></tr><tr><td>bar_round</td><td>Number (0 to 1)</td><td>0.25</td><td>Makes the bars' corners round (with 0 for totally round bars and 1 for square bars)</td></tr></table><!----><h4>Update</h4><p>The GanttChart starts drawing a bar whenever a value for a given series changes from false to true,
+and stops drawing the bar when the value returns to false.
+
+Call the update method with an object {serie: value} to update the control. You do not need to
+include all series, only the ones you want to update.
+</p><code>Subtle.GanttChart.update({"serie1" : value, "serie2" : value, ...}, time = "")</code><p>Here the time can be specified as an ISO string (YYYY-MM-DD HH:MM:SS) or as a javascript Date
+(the default value, an empty string, means that the value passed corresponds to the present time).</p><h3 id="line_plot">LinePlot</h3><p> Use <code>Subtle.LinePlot(object, params)</code> to display a line plot.</p><p>A LinePlot can be oriented horizontally or vertically, 
+but in both cases the y values refer to the changing data 
+and the x values refer to the index data (for example, 
+if we want to represent the temperature at different dephts 
+in a tank, the y values would be the temperature and the
+x values would be the depth).</p><!----><h4>Example</h4><div class="h_layout" style="height:300px"><div id="lineplot1" style="max-width:300px"></div><div id="lineplot2" style="max-width:300px"></div></div><script>var lineplot1 = new Subtle.LinePlot("lineplot1",{values_x : [0.1,0.5,0.9], labels:["Alpha","Beta","Gamma"], ticks_minor:[-0.5, 0.5], show_labels:true, show_values:true, show_ticks:true});
+var lineplot2 = new Subtle.LinePlot("lineplot2",{direction:"vertical", label_offset:100, value_offset:40, values_x : [0.1,0.5,0.9], labels:["Alpha","Beta","Gamma"], ticks_minor:[-0.5, 0.5], show_labels:true, show_values:true, show_ticks:true});
+lineplot1.update([0.1,0.5,0.3]);
+lineplot2.update([0.1,0.5,0.3]);
+
+</script><pre> <code class="block javascript">var lineplot1 = new Subtle.LinePlot("lineplot1",
+  {values_x : [0.1,0.5,0.9], 
+  labels:["Alpha","Beta","Gamma"], 
+  ticks_minor:[-0.5, 0.5], 
+  show_labels:true, 
+  show_values:true, show_ticks:true}
+);
+
+var lineplot2 = new Subtle.LinePlot("lineplot2",
+  {direction:"vertical", 
+  label_offset:100, 
+  value_offset:40, 
+  values_x : [0.1,0.5,0.9], 
+  labels:["Alpha","Beta","Gamma"], 
+  ticks_minor:[-0.5, 0.5], 
+  show_labels:true, 
+  show_values:true, 
+  show_ticks:true}
+);
+
+lineplot1.update([0.1,0.5,0.3]);
+lineplot2.update([0.1,0.5,0.3]);</code></pre><!----><h4>Params</h4><p>The MultiTimePlot inherits all params from TimePlot, with the following differences:</p><table class="params-table"><tr><td>param</td><td>type</td><td>default</td><td>description</td></tr><tr><td>y_min</td><td>Number</td><td>-1</td><td>Minimum value for the "y" axis</td></tr><tr><td>y_max</td><td>Number</td><td>1</td><td>Maximum value for the "y" axis</td></tr><tr><td>x_min</td><td>Number</td><td>0</td><td>Minimum value for the "x" axis</td></tr><tr><td>x_max</td><td>Number</td><td>1</td><td>Maximum value for the "x" axis</td></tr><tr><td>values_x</td><td>Array[Number]</td><td>[0]</td><td>An array with the values for the "x" axis</td></tr><tr><td>direction</td><td>String ("horizontal" or "vertical")</td><td>"horizontal"</td><td>Direction of the line plot</td></tr><tr><td>show_grid</td><td>Boolean</td><td>true</td><td>Displays the grid for the "x" axis</td></tr><tr><td>show_points</td><td>Boolean</td><td>true</td><td>Displays points on each intersection</td></tr><tr><td>show_ticks</td><td>Boolean</td><td>true</td><td>Displays ticks for the "y" axis</td></tr><tr><td>ticks_major</td><td>Array[Number]</td><td>[1, -1]</td><td>Major ticks for the "y" axis</td></tr><tr><td>ticks_minor</td><td>Array[Number]</td><td>[0.2, -0.2]</td><td>Minor ticks for the "y" axis</td></tr><tr><td>show_labels</td><td>Boolean</td><td>false</td><td>Show labels for the "x" axis</td></tr><tr><td>label_offset</td><td>Number</td><td>30</td><td>Offset for the labels on the "x" axis</td></tr><tr><td>labels</td><td>Array[String]</td><td>[""]</td><td>Set custom labels for the "x" axis</td></tr><tr><td>show_values</td><td>Boolean</td><td>false</td><td>Show values on the "x" axis</td></tr><tr><td>value_offset</td><td>Number</td><td>30</td><td>Offset for the values on the "x" axis</td></tr><tr><td>color</td><td>String (from Subtle.COLORS, hex or rgb)</td><td>COLORS['primary']</td><td>Line color</td></tr><tr><td>stroke_width</td><td>Number</td><td>2</td><td>Line width</td></tr><tr><td>grid_stroke_width</td><td>Number</td><td>1</td><td>Grid's line width</td></tr></table><!----><h4>Update</h4><p>Call the update method with an array [value1, value2, ...] to update the control.
+</p><code>Subtle.LinePlot.update([value1, value2, ...])</code><p>You can also pass a single value and the index
+</p><code>Subtle.LinePlot.update(value, index)</code><h3 id="web_plot">Web Plot</h3><p> Use <code>Subtle.Sparkline(object, params)</code> to display small time plot</p><!----><h4>Example</h4><div class="h_layout" style="height:250px"><div id="webplot" style="max-width:250px"></div></div><script>var webplot = new Subtle.WebPlot("webplot",{});
+webplot.update([0.1,0.2,0.3,0.4,0.5,0.6])
+
+</script><pre> <code class="block javascript">var webplot = new Subtle.WebPlot("webplot",{});
+webplot.update([0.1,0.2,0.3,0.4,0.5,0.6])</code></pre><!----><h4>Params</h4><table class="params-table"><tr><td>param</td><td>type</td><td>default</td><td>description</td></tr><tr><td>labels</td><td>Array[String]</td><td>["A","B","C","D","E","F"]</td><td>Array with the names of each value series (one for each point in the web plot)</td></tr><tr><td>max_value</td><td>Number</td><td>1</td><td>Maximum value</td></tr><tr><td>min_value</td><td>Number</td><td>0</td><td>Minimum value</td></tr><tr><td>limit_high</td><td>Number</td><td>NaN</td><td>Show a 'danger zone' for high values (if NaN it's not shown)</td></tr><tr><td>limit_low</td><td>Number</td><td>NaN</td><td>Show a 'danger zone' for low values (if NaN it's not shown)</td></tr><tr><td>show_grid</td><td>Boolean</td><td>true</td><td>Show spikes from the center to the outer radius</td></tr><tr><td>show_tooltips</td><td>Boolean</td><td>true</td><td>Shows tooltips on the endpoints with the name of the labels (this requires tippy.js and popper.js)</td></tr><tr><td>endpoint_size</td><td>Number</td><td>5</td><td>Radius (in pixels) of the points at the end of the spikes</td></tr><tr><td>padding</td><td>Number</td><td>50</td><td>General padding (in pixels)</td></tr><tr><td>color</td><td>String (from Subtle.COLORS, hex or rgb)</td><td>COLORS['primary']</td><td>Line color</td></tr><tr><td>opacity</td><td>Number (0 to 1)</td><td>0.5 </td><td>Opacity for the filling of the web plot</td></tr></table><!----><h4>Update</h4><p>Call the update method with an array [value1, value2, ...] to update the control.
+</p><code>Subtle.WebPlot.update([value1, value2, ...])</code><p>You can also pass a single value and the index
+</p><code>Subtle.WebPlot.update(value, index)</code><h3 id="logger">Logger</h3><p> Use <code>Subtle.Sparkline(object, params)</code> to display small time plot</p><!----><h4>Example</h4><div class="h_layout" style="height:250px"><div id="mlogger" style="max-width:500px"></div></div><script>var mlogger = new Subtle.Logger("mlogger");
+mlogger.update("info", "Some info", "This is the info text");
+mlogger.update("warning", "Some warning", "This is the warning text");
+mlogger.update("error", "Some error", "This is the error text");
+mlogger.update("info", "More info", "More info");
+
+</script><pre> <code class="block javascript">var mlogger = new Subtle.Logger("mlogger");
+ 
+mlogger.update("info", "Some info", "This is the info text");
+mlogger.update("warning", "Some warning", "This is the warning text");
+mlogger.update("error", "Some error", "This is the error text");
+mlogger.update("info", "More info", "More info");</code></pre><!----><h4>Params</h4><table class="params-table"><tr><td>param</td><td>type</td><td>default</td><td>description</td></tr><tr><td>show_stems</td><td>Boolean</td><td>true</td><td>Shows vertical lines joining the entries of the logger</td></tr><tr><td>show_timestamp</td><td>Boolean</td><td>false</td><td>Shows a timestamp on each entry</td></tr><tr><td>max_length</td><td>Number</td><td>100</td><td>How many entries are displayed on the logger</td></tr></table><!----><h4>Update</h4><p>Call the update method to insert a new entry, specifing the icon, the title and the text
+</p><code>Subtle.GaugeHistoric.update(icon, title, text, [timestamp = ""], [color = ""])</code><p>The icon can be "info", "warning" or "error". The color parameter is the color of the icon. If
+it's an empty string, it will display the corresponding color from Subtle.COLORS.</p><h3 id="svg_view">Svg View</h3><p>Use<code>Subtle.SvgView(object, params)</code> to display an interactive svg image</p><!----><h4>Examples</h4><div class="h_layout" style="height:400px"><div id="svgview1" style="max-width:500px"></div></div><script>var server_state = true;
+var svgview1 = new Subtle.SvgView("svgview1",{img:"img/svg_example.svg", onload:function(){
+    svgview1.set_child_color("svg_server_item","ok");
+    svgview1.set_child_bind("svg_accesspoint_item_b","svg_cellphone_item");
+
+    svgview1.set_child_onclick("svg_server_item_b", function(){
+    server_state = !server_state;
+    svgview1.set_child_color("svg_server_item",server_state ? "ok" : "error");
+    });
+
+    svgview1.set_child_tooltip("svg_pc_item_b","<b id='caca'>Desktop PC</b><br>192.168.0.10");
+    svgview1.set_child_tooltip("svg_laptop_item_b","<b>Laptop</b><br>192.168.0.20");
+}});
+</script><pre><code class="block javascript">var server_state = true;
+var svgview = new Subtle.SvgView("svgview",
+   {img:"img/svg_example.svg",
+   onload:function(){
+      svgview.set_child_color("svg_server_item","ok");
+      svgview.set_child_bind("svg_accesspoint_item_b","svg_cellphone_item");
+
+      svgview.set_child_onclick("svg_server_item_b", function(){
+         server_state = !server_state;
+         svgview.set_child_color("svg_server_item",server_state ? "ok" : "error");
+      });
+
+      svgview.set_child_tooltip("svg_pc_item_b","&lt;b&gt;Desktop PC&lt;/b&gt;&lt;br&gt;192.168.0.10");
+      svgview.set_child_tooltip("svg_laptop_item_b","&lt;b&gt;Laptop&lt;/b&gt;&lt;br&gt;192.168.0.20");
+   }
+   }
+);</code></pre><div id="svgview2" style="height:260px"></div><script>var svgview2 = new Subtle.SvgView("svgview2",{img:"img/svg_example_2.svg", onload:function(){
+    svgview2.set_child_for_html("svg_tank_1_A");
+    svgview2.set_child_for_html("svg_tank_1_B");
+    svgview2.set_child_for_html("svg_tank_2");
+    svgview2.set_child_for_html("svg_tank_3");
+
+    let svg_tank_1_A = new Subtle.Scale("svg_tank_1_A", {});
+
+    let svg_tank_1_B = new Subtle.TimePlot("svg_tank_1_B", {smooth: true, right_offset: 0});
+    window.setInterval(function(){
+        svg_tank_1_B.update(Math.random()*0.7+0.25)
+        svg_tank_1_A.update(Math.random()*0.5+0.25)
+    }, 100)
+
+    let svg_tank_2 = new Subtle.LinePlot("svg_tank_2", {values_x: [0,0.33,0.66,1], show_ticks: true, direction: "vertical", show_values: true, value_offset: 39, ticks_major: []})
+    svg_tank_2.update([0.2,-0.2,0.8,0]);
+
+    let svg_tank_3 = new Subtle.FillBar("svg_tank_3", {vertical: true, border_radius: 0})
+    svg_tank_3.update(0.7);
+}});
+</script><pre><code class="block javascript">var svgview2 = new Subtle.SvgView("svgview2",
+   {img:"img/svg_example_2.svg", 
+   onload:function(){
+      svgview2.set_child_for_html("svg_tank_1_A");
+      svgview2.set_child_for_html("svg_tank_1_B");
+      svgview2.set_child_for_html("svg_tank_2");
+      svgview2.set_child_for_html("svg_tank_3");
+
+
+      let svg_tank_1_B = new Subtle.TimePlot("svg_tank_1_B", {smooth: true});
+      window.setInterval(function(){
+         svg_tank_1_B.update(Math.random()*0.7+0.25)
+      }, 100)
+
+      let svg_tank_2 = new Subtle.LinePlot("svg_tank_2", {values_x: [0,0.33,0.66,1], show_ticks: true, direction: "vertical", show_values: true, value_offset: 39})
+      svg_tank_2.update([0.2,-0.2,0.8,0]);
+
+      let svg_tank_3 = new Subtle.FillBar("svg_tank_3", {vertical: true, border_radius: 0})
+      svg_tank_3.update(0.8);
+   }
+   }
+);</code></pre><!----><h4>Params</h4><table class="params-table"><tr><td>param</td><td>type</td><td>default</td><td>description</td></tr><tr><td>img</td><td>String</td><td>""</td><td>Path to the svg file</td></tr><tr><td>onload</td><td>Function()</td><td>function(){}</td><td>A function that executes when the svg file is loaded</td></tr><tr><td>stretch</td><td>Boolean</td><td>true</td><td>Stretch the svg image size to fill the control</td></tr><tr><td>hover_effect</td><td>Boolean</td><td>true</td><td>Changes the color of the active items slighltly when you hover over them.</td></tr></table><!----><h4>Update</h4><p>You can add interactive elements to the svg
+such as tooltips and onclick events. To do so,
+the interactive elements must have a unique id
+(within the scope of the html document). The id
+of each element can be set by editing the xml
+code of the svg file (using any text editor),
+and you can group multiple elements using the
+<code>&lt;g&gt;&lt;/g&gt;</code>
+tag.
+</p><p>The following methods allow you to add interactive elements:
+</p><ol><li>Use <code>SvgView.set_child_color(element_id, color)</code> to change the color of an element.</li><li>Use <code>SvgView.set_child_text(element_id, text)</code> to change the text of an element.</li><li>Use <code>SvgView.set_child_onclick(element_id, onclick)</code> to set the onclick event on an element.</li><li>Use <code>SvgView.set_child_bind(element1_id1, element2_id)</code> to bind two elements (so that the second element remains hidden until you hover on the first element).</li><li>Use <code>SvgView.set_child_tooltip(element_id, tooltip)</code> to add a tooltip to an element (requires tippy.js and popper.js). The tooltip parameter can be html code.</li><li>Use <code>SvgView.set_child_for_html(element_id)</code> to prepare an element to include other html controls. This is done using the <code>foreignObject</code> tag inside the svg. You have to be careful when creating your svg though, because any value of ViewBox that causes the svg to rescale will cause the elements inside the foreignObject to grow in size.</li></ol><h3 id="map_view">Map View</h3><p>Use<code>Subtle.MapView(object, params)</code>to display a map.</p><p>The MapView utilizes the <a href="https://leafletjs.com/">leaflet.js</a> library. You can override all methods
+presented here and use the map object directly (Subtle.MapView.map). The
+MapView only provides an easier to use wrapper to draw markers and figures
+on a map. See the <a href="https://leafletjs.com/">leaflet documentation</a>
+for more.
+</p><!----><h4>Examples</h4><div id="mymap1" style="width:100%; height:400px"></div><script>var mymap1 = new Subtle.MapView("mymap1");
+mymap1.update_marker("buenos_aires", {icon:"<i class='icon-pin'></i>", position: [-34.603722, -58.381592], tooltip: "Buenos Aires", icon_top: 24, icon_left: 12});
+mymap1.update_marker("amsterdam", {icon:"<i class='icon-pin'></i>", position: [52.370216, 4.895168], tooltip: "Amsterdam", icon_top: 24, icon_left: 12});
+mymap1.update_marker("new_york", {icon:"<i class='icon-pin'></i>", position: [40.7127, -74.0059], tooltip: "New York", icon_top: 24, icon_left: 12});
+</script><pre><code class="block javascript">var mymap = new Subtle.MapView("mymap")
+mymap.update_marker("buenos_aires", {icon:"&lt;i class='icon-pin'&gt;&lt;/i&gt;", position: [-34.603722, -58.381592], tooltip: "Buenos Aires", icon_top: 24, icon_left: 12});
+mymap.update_marker("amsterdam", {icon:"&lt;i class='icon-pin'&gt;&lt;/i&gt;", position: [52.370216, 4.895168], tooltip: "Amsterdam", icon_top: 24, icon_left: 12});
+mymap.update_marker("new_york", {icon:"&lt;i class='icon-pin'&gt;&lt;/i&gt;", position: [40.7127, -74.0059], tooltip: "New York", icon_top: 24, icon_left: 12});
+
+</code></pre><div id="mymap2" style="width:100%; height:400px"></div><script>var mymap2 = new Subtle.MapView("mymap2", {lat:40.78277381137337, lon:-73.96477242358108, zoom:13 });
+mymap2.update_marker("m2_icon", {icon:"<i class='icon-car-top'></i>", position: [40.784188498795274, -73.9586093512171], tooltip: "Current vehicle location", icon_top: 12, icon_left: 12, rotation: -150});
+let trace = [[40.76811977387323, -73.9816330849649], [40.800417243600315, -73.95795977879521], [40.796920475636476, -73.94922663845642], [40.784188498795274, -73.9586093512171]]
+mymap2.update_trace("m2_trace", {points: trace});
+mymap2.update_circle("m2_circle", {position: [40.784188498795274, -73.9586093512171], radius: 300});
+</script><pre><code class="block javascript">var mymap2 = new Subtle.MapView("mymap2", {lat:40.78277381137337, lon:-73.96477242358108, zoom:13 });
+mymap2.update_marker("m2_icon", {icon:"&lt;i class='icon-car-top'>&gt;&lt;/i&gt;", position: [40.784188498795274, -73.9586093512171], tooltip: "Current vehicle location", icon_top: 12, icon_left: 12, rotation: -150});
+let trace = [[40.76811977387323, -73.9816330849649], [40.800417243600315, -73.95795977879521], [40.796920475636476, -73.94922663845642], [40.784188498795274, -73.9586093512171]]
+mymap2.update_trace("m2_trace", {points: trace});
+mymap2.update_circle("m2_circle", {position: [40.784188498795274, -73.9586093512171], radius: 300});
+
+</code></pre><!----><h4>Params</h4><p>The historic gauge is derived from the normal gauge, and thus has all it's params, with differences on the following:</p><table class="params-table"><tr><td>param</td><td>type</td><td>default</td><td>description</td></tr><tr><td>lat</td><td>Number</td><td>0</td><td>Map initial latitude</td></tr><tr><td>lon</td><td>Number</td><td>0</td><td>Map initial longitude</td></tr><tr><td>zoom</td><td>Number (2 to 20)</td><td>2</td><td>Map initial zoom</td></tr><tr><td>show_layer_control</td><td>Boolean</td><td>false</td><td>Shows an icon on the top right with a list of the different layers on your map (use in combination with marker groups, see update)</td></tr><tr><td>provider</td><td>String</td><td>'https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png'</td><td>Tile provider. See <a href='http://leaflet-extras.github.io/leaflet-providers/preview/'>this link</a> for a list of many tile providers available (some of them might have a commercial license)</td></tr><tr><td>leaflet_options</td><td>Object</td><td>{ attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'}</td><td>An object passed to the Leaflet constructor with different settings (see the leaflet documentation)</td></tr><tr><td>correct_icon_x</td><td>Number</td><td>6</td><td>Makes a correction to the icons in pixels for a correct positioning on the map</td></tr><tr><td>correct_icon_y</td><td>Number</td><td>7</td><td>Makes a correction to the icons in pixels for a correct positioning on the map</td></tr></table><!----><h4>Update</h4><p>You can draw different markers and figures on the MapView with the following functions:
+</p><ol><li>Use <code>MapView.update_marker(marker_id, params)</code> to create or update a marker on the map.
+The marker optional params are:<table class="params-table"><tr><td>param</td><td>type</td><td>default</td><td>description</td></tr><tr><td>icon</td><td>String</td><td>""</td><td>An html code that defines the icon (see Subtleicons). If lefy empty it defaults to the leaflet icon. The icon sizes are by default 24x24 pixels.</td></tr><tr><td>group</td><td>String</td><td>"default"</td><td>A group name. Use this in combination with the <b>show_layer_control</b> to allow the user to show/hide groups.</td></tr><tr><td>icon_left</td><td>Number</td><td>12</td><td>Defines the horizontal center of the icon (in pixels from the left)</td></tr><tr><td>icon_top</td><td>Number</td><td>12</td><td>Defines the vertical center of the icon (in pixels from the top)</td></tr><tr><td>rotation</td><td>Number</td><td>0</td><td>Angle to rotate the icon of the marker (in degrees)</td></tr><tr><td>visible</td><td>Boolean</td><td>true</td><td>Shows / hides the marker</td></tr><tr><td>tooltip</td><td>String</td><td>""</td><td>Displays a tooltip when you hover on the marker (requires tippy.js and popper.js)</td></tr><tr><td>onclick</td><td>Function()</td><td>function(){}</td><td>Function called when you click the marker</td></tr></table><br/></li><li>Use <code>MapView.update_trace(marker_id, params)</code> to create or update a polyline on the map.
+The trace optional params are:<table class="params-table"><tr><td>param</td><td>type</td><td>default</td><td>description</td></tr><tr><td>points</td><td>Array[[Lat,Lon]]</td><td>[]</td><td>An array with the points [Lat, Lon] that define the polyline</td></tr><tr><td>group</td><td>String</td><td>"default"</td><td>A group name. Use this in combination with the <b>show_layer_control</b> to allow the user to show/hide groups.</td></tr><tr><td>color</td><td>String</td><td>"#3388ff"</td><td>Color of the line</td></tr><tr><td>width</td><td>Number</td><td>2</td><td>Stroke width of the line</td></tr><tr><td>visible</td><td>Boolean</td><td>true</td><td>Shows / hides the trace</td></tr><tr><td>onclick</td><td>Function()</td><td>function(){}</td><td>Function called when you click on the trace</td></tr><tr><td>onhover</td><td>Function()</td><td>function(){}</td><td>Function called when you hover on the trace</td></tr></table><br/></li><li>Use <code>MapView.update_cricle(marker_id, params)</code> to create or update a circle on the map.
+The circle optional params are:<table class="params-table"><tr><td>param</td><td>type</td><td>default</td><td>description</td></tr><tr><td>position</td><td>Array[Lat,Lon]</td><td>[0, 0]</td><td>The position of the circle</td></tr><tr><td>radius</td><td>Number</td><td>0</td><td>Radius of the circle (in meters)</td></tr><tr><td>group</td><td>String</td><td>"default"</td><td>A group name. Use this in combination with the <b>show_layer_control</b> to allow the user to show/hide groups.</td></tr><tr><td>color</td><td>String</td><td>"#3388ff"</td><td>Color of the circle's filling</td></tr><tr><td>opacity</td><td>Number (0 to 1)</td><td>0.5</td><td>Opacity of the circle's filling</td></tr><tr><td>border_color</td><td>String</td><td>"#3388ff"</td><td>Color of the circle's border</td></tr><tr><td>border_width</td><td>Number</td><td>1</td><td>Stroke width of the circle's border</td></tr><tr><td>visible</td><td>Boolean</td><td>true</td><td>Shows / hides the circle</td></tr><tr><td>onclick</td><td>Function()</td><td>function(){}</td><td>Function called when you click on the circle</td></tr><tr><td>onhover</td><td>Function()</td><td>function(){}</td><td>Function called when you hover on the circle</td></tr></table><br/></li><li>Use <code>MapView.update_polygon(marker_id, params)</code> to create or update a polygon on the map.
+The polygon optional params are:<table class="params-table"><tr><td>param</td><td>type</td><td>default</td><td>description</td></tr><tr><td>points</td><td>Array[[Lat,Lon]]</td><td>[]</td><td>An array with the points [Lat, Lon] that define the polyline</td></tr><tr><td>group</td><td>String</td><td>"default"</td><td>A group name. Use this in combination with the <b>show_layer_control</b> to allow the user to show/hide groups.</td></tr><tr><td>color</td><td>String</td><td>"#3388ff"</td><td>Color of the polygon's filling</td></tr><tr><td>opacity</td><td>Number (0 to 1)</td><td>0.5</td><td>Opacity of the polygon's filling</td></tr><tr><td>border_color</td><td>String</td><td>"#3388ff"</td><td>Color of the polygon's border</td></tr><tr><td>border_width</td><td>Number</td><td>1</td><td>Stroke width of the polygon's border</td></tr><tr><td>visible</td><td>Boolean</td><td>true</td><td>Shows / hides the polygon</td></tr><tr><td>onclick</td><td>Function()</td><td>function(){}</td><td>Function called when you click on the polygon</td></tr><tr><td>onhover</td><td>Function()</td><td>function(){}</td><td>Function called when you hover on the polygon</td></tr></table></li></ol><h3 id="table">Table</h3><p> Use <code>Subtle.Table(object, params)</code> to display a table with data</p><!----><h4>Example</h4><div id="table_div" style="width:100%;"></div><script>var table = new Subtle.Table("table_div", {headers: ["Row", "North", "East", "South", "West"], allow_sort: true, insert_on_top: true});
+
+table.update("row 1", {"Row": 1, "North": 10});
+table.update("row 2", {"Row": 2, "North": 9, "East": 8});
+table.update("row 3", {"Row": 3, "North": 9, "South": 12});
+table.update("row 4", {"Row": 4, "North": 10, "East": 55, "South": 3, "West": 15});
+
+table.update("row 2", {"East": 35});
+
+</script><pre> <code class="block javascript">var table = new Subtle.Table("table_div", 
+  {headers: ["Row", "North", "East", "South", "West"], 
+  allow_sort: true, 
+  insert_on_top: true}
+);
+ 
+table.update("row 1", {"Row": 1, "North": 10});
+table.update("row 2", {"Row": 2, "North": 9, "East": 8});
+table.update("row 3", {"Row": 3, "North": 9, "South": 12});
+table.update("row 4", {"Row": 4, "North": 10, "East": 55, "South": 3, "West": 15});
+ 
+table.update("row 2", {"East": 35});</code></pre><!----><h4>Params</h4><table class="params-table"><tr><td>param</td><td>type</td><td>default</td><td>description</td></tr><tr><td>headers</td><td>Array[String]</td><td>["A","B","C","D"]</td><td>Array with the names of each column</td></tr><tr><td>header_aliases</td><td>Object ({header: alias})</td><td>{}</td><td>A map to change the header's names on the table</td></tr><tr><td>table_class</td><td>String</td><td>"subtletable"</td><td>CSS class to apply to the table for styling</td></tr><tr><td>show_row_headers</td><td>Boolean</td><td>true</td><td>Show a column that indicates the row number</td></tr><tr><td>row_header_width</td><td>Number</td><td>30</td><td>Row heades' column width (in pixels)</td></tr><tr><td>null_cell_text</td><td>String</td><td>""</td><td>Value that should be displayed in case a cell has no value</td></tr><tr><td>allow_sort</td><td>Boolean</td><td>false</td><td>Let's the user sort the rows of the table by clicking the headers</td></tr><tr><td>insert_on_top</td><td>Boolean</td><td>false</td><td>Insert new rows on top</td></tr><tr><td>max_displayed_data</td><td>Number</td><td>100</td><td>Max number of rows displayed</td></tr><tr><td>remove_old_data</td><td>Boolean</td><td>true</td><td>Remove old rows when the number of rows passes the limit (max_displayed_data)</td></tr></table><!----><h4>Update</h4><p>Call the update method to add new rows to the table:
+</p><code>Subtle.Table.update(id, data)</code><p>For each row you insert, you need to specify a row id. You you also pass an empty string ("") as id
+and the data will be assigned an auto id.
+</p><p>The data argument on the update function is a dict {column: value}, where column is the name of the
+column as defined by the headers (Table.params.headers)</p><h3 id="treeview">Tree View</h3><p>Use<code>Subtle.TreeView(object, nodes, params)</code> to display a tree view</p><p>The nodes argument is a list with all the nodes in the tree (see the example).
+</p><!----><h4>Example</h4><div id="treeview_div" style="width:100%;"></div><script>var nodes = [
+    { path: 'A/B/X' },
+    { path: 'A/B/Y' },
+    { path: 'A/C/X' },
+    { path: 'A/C/Z' },
+    { path: 'A/W' },
+];
+var treeview = new Subtle.TreeView("treeview_div", nodes, {
+    show_arrows: true,
+    show_checkboxes: true
+})
+
+</script><pre><code class="block javascript">var nodes = [
+    { path: 'A/B/X' },
+    { path: 'A/B/Y' },
+    { path: 'A/C/X' },
+    { path: 'A/C/Z' },
+    { path: 'A/W' },
+];
+var treeview = new Subtle.TreeView("treeview_div", nodes, {show_arrows: true, show_checkboxes: true})</code></pre><!----><h4>Params</h4><table class="params-table"><tr><td>param</td><td>type</td><td>default</td><td>description</td></tr><tr><td>padding</td><td>Number</td><td>5</td><td>Item padding (in pixels)</td></tr><tr><td>indentation</td><td>Number</td><td>25</td><td>Indent (in pixels) for sub levels</td></tr><tr><td>path_separator</td><td>String</td><td>"/"</td><td>Path separator for the nodes</td></tr><tr><td>show_checkboxes</td><td>Boolean</td><td>true</td><td>Show checkboxes on the tree end nodes (requires bootstrap)</td></tr><tr><td>show_arrows</td><td>Boolean</td><td>false</td><td>Show arrows for open/closed nodes</td></tr><tr><td>highlight_on_select</td><td>Boolean</td><td>true</td><td>Highlight nodes when selected</td></tr><tr><td>auto_sort</td><td>Boolean</td><td>false</td><td>Sort nodes alphabetically</td></tr><tr><td>on_select</td><td>Function</td><td>function(){}</td><td>Function called when the current node changes</td></tr><tr><td>on_checkbox_changed</td><td>Function</td><td>function(){}</td><td>Function called when a node is checked / unchecked</td></tr></table><!----><h4>Update</h4><p>The path of the current node is stored in <code>treeview.current_node</code>
+</p><p>To get the checkbox states of all nodes, check <code>treeview.nodes_checkbox_state</code>
+</p><p>Additionally, the following methods are available:
+</p><p><code>treeview.expand_all()</code>
+</p><p><code>treeview.collapse_all()</code>
+</p><p><code>treeview.search(text) // filter the nodes by text</code>
+</p><p>For each row you insert, you need to specify a row id. You you also pass an empty string ("") as id
+and the data will be assigned an auto id.
+</p><p>The data argument on the update function is a dict {column: value}, where column is the name of the
+column as defined by the headers (Table.params.headers)
+</p><p>If you want to change the nodes of the tree, you can edit the <code>treeview.nodes</code>
+object and then call the <code>treeview.draw()</code> method.</p><div style="height:100px"></div></body></html>

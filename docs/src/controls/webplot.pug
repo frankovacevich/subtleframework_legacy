@@ -1,0 +1,105 @@
+h3#web_plot Web Plot
+
+p 
+    | Use 
+    code Subtle.Sparkline(object, params)
+    |  to display small time plot
+
+//
+h4 Example
+
+div.h_layout(style="height:250px")
+    div#webplot(style="max-width:250px")
+
+script.
+    var webplot = new Subtle.WebPlot("webplot",{});
+    webplot.update([0.1,0.2,0.3,0.4,0.5,0.6])
+    
+    
+pre 
+    code.block.javascript
+        | var webplot = new Subtle.WebPlot("webplot",{});
+        | webplot.update([0.1,0.2,0.3,0.4,0.5,0.6])
+
+//
+h4 Params
+
+table.params-table
+    tr
+        td param
+        td type
+        td default
+        td description
+    tr
+        td labels
+        td Array[String]
+        td ["A","B","C","D","E","F"]
+        td Array with the names of each value series (one for each point in the web plot)
+    tr
+        td max_value
+        td Number
+        td 1
+        td Maximum value
+    tr
+        td min_value
+        td Number
+        td 0
+        td Minimum value
+    tr
+        td limit_high
+        td Number
+        td NaN
+        td Show a 'danger zone' for high values (if NaN it's not shown)
+    tr
+        td limit_low
+        td Number
+        td NaN
+        td Show a 'danger zone' for low values (if NaN it's not shown)
+    tr
+        td show_grid
+        td Boolean
+        td true
+        td Show spikes from the center to the outer radius
+    tr
+        td show_tooltips
+        td Boolean
+        td true
+        td Shows tooltips on the endpoints with the name of the labels (this requires tippy.js and popper.js)
+    tr
+        td endpoint_size
+        td Number
+        td 5
+        td Radius (in pixels) of the points at the end of the spikes
+    tr
+        td padding
+        td Number
+        td 50
+        td General padding (in pixels)
+    tr
+        td color
+        td String (from Subtle.COLORS, hex or rgb)
+        td COLORS['primary']
+        td Line color
+    tr
+        td opacity
+        td Number (0 to 1)
+        td 0.5 
+        td Opacity for the filling of the web plot
+    
+
+
+//
+h4 Update
+
+p.
+    Call the update method with an array [value1, value2, ...] to update the control.
+
+code
+    | Subtle.WebPlot.update([value1, value2, ...])
+
+p.
+    You can also pass a single value and the index
+
+code
+    | Subtle.WebPlot.update(value, index)
+

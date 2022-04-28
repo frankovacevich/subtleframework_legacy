@@ -1,0 +1,119 @@
+.grid_layout{
+  display: grid;
+  width: 100%;
+  height: 100%;
+
+  grid-template-columns: repeat(12,1fr);
+  grid-template-rows: repeat(12,1fr);
+  grid-gap: 10px;
+
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .grid_layout{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+}
+
+//
+// Vertical and horizontal layouts
+//
+
+.h_layout{
+  display: flex;
+  align-content: stretch;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  height:100%;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: "at_font";
+}
+
+.v_layout{
+  @extend .h_layout;
+  flex-direction: column;
+  font-family: "at_font";
+}
+
+.h_layout>div, .v_layout>div{
+  flex: 1 0;
+}
+
+//
+// Grid elements
+//
+
+.gpanel{
+  padding: 10px;
+  padding-top: 0;
+  background-color: #597a8538;
+  border-radius: 6px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  font-family: "at_font";
+}
+
+.gtitle{
+  flex-grow:0 !important;
+  padding-bottom:10px;
+  padding-top: 10px;
+  width: 100%;
+  font-weight: bold;
+  min-height: auto !important;
+  font-family: "at_font";
+}
+
+.gtext{
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "at_font";
+}
+
+.gtext-right{
+  @extend .gtext;
+  justify-content: flex-end;
+  padding-right: 5px;
+  font-family: "at_font";
+}
+
+.gtext-left{
+  @extend .gtext;
+  justify-content: flex-start;
+  padding-left: 5px;
+  font-family: "at_font";
+}
+
+///
+
+.flex_layout{
+  display: flex;
+  padding: 10px;
+  /*height: 100%; */
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  overflow-y: scroll;
+  align-content: flex-start;
+}
+
+.fpanel{
+  //margin:15px;
+  padding:15px;
+  box-sizing:border-box;
+  background-color:#FFFFFF;
+  border-radius:5px;
+  flex-grow: 1;
+  min-width: 200px;
+
+  -webkit-box-shadow: 0px 0px 8px 2px rgba(199,199,199,1);
+  -moz-box-shadow: 0px 0px 8px 2px rgba(199,199,199,1);
+  box-shadow: 0px 0px 8px 2px rgba(199,199,199,1);
+  font-family: "at_font";
+}

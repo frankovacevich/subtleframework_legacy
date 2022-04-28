@@ -1,0 +1,1 @@
+pug -w src/controls.pug src/index.pug src/layout.pug src/colors.pug src/examples.pug src/plotly.pug -o .

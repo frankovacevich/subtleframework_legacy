@@ -1,0 +1,79 @@
+html
+    head
+        include head/head.pug
+    body
+        include head/toc.pug
+
+        h2#layout Plotly helpers
+
+        p.
+            <a href="https://plotly.com/javascript/">Plotly</a> is a free and open source
+            graphing library that is easy to use and integrate on any web app. Subtle framework
+            provides a bunch of methods for quickly drawing charts with plotly.
+
+        p.
+            Use the <code>Subtle.PlotlyObject(object, params)</code> to create a plotly helper.
+
+        p.
+            Use the method <code>Subtle.PlotlyObject.draw()</code> to draw the plot after adding
+            the traces you want.
+
+        p.
+            To remove all traces from the plotly object, use <code>Subtle.PlotlyObject.traces = []</code>.
+            This will remove all current traces after you redraw the object.
+
+
+        h4 Params
+
+        table.params-table
+            tr
+                td param
+                td type
+                td default
+                td description
+            tr
+                td margin
+                td Object
+                td { l: 30, r: 20, b: 30, t: 30, pad: 5 }
+                td Object with the values (in pixels) for the margins
+            tr
+                td showlegend
+                td Boolean
+                td false
+                td Show/hide the legend
+            tr
+                td legend
+                td Object
+                td { orientation: "h", x:0, y:1.2 }
+                td.
+                    Legend settings (<a href="https://plotly.com/javascript/legend/">more</a>)
+            tr
+                td xaxis
+                td Object
+                td { title: "" }
+                td.
+                    X Axis settings (<a href="https://plotly.com/javascript/axes/">more</a>)
+            tr
+                td yaxis
+                td Object
+                td { title: "" }
+                td.
+                    Y Axis settings (<a href="https://plotly.com/javascript/axes/">more</a>)
+            tr
+                td dragmode
+                td String ("zoom", "pan", "select", "lasso")
+                td "zoom"
+                td Set the object dragmode
+            tr
+                td hovermode
+                td String ("x", "y", "closest")
+                td "closest"
+                td Show/hide the legend
+
+        include plotly/scatter.pug
+        include plotly/column.pug
+        include plotly/pie.pug
+        include plotly/boxes.pug
+        include plotly/histogram.pug
+        include plotly/heatmap.pug
+        include plotly/text.pug

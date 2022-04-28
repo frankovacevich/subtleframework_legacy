@@ -1,0 +1,54 @@
+h3#pie Pie chart
+
+p.
+    Use <code>Subtle.PlotlyObject.add_piechart(data, params)</code> to add a pie
+    chart to a plotly object.
+
+div#plotly_pie(style="width:100%; height:200px")
+
+script.
+    var plotly_pie = new Subtle.PlotlyObject("plotly_pie", {});
+    plotly_pie.add_piechart([["Alpha", "Beta", "Gamma", "Delta"], [7,5,6,8]]);
+    plotly_pie.add_piechart([["A", "B", "C", "D"], [3,7,8,8]]);
+    plotly_pie.add_piechart([["X", "Y", "Z", "W"], [6,6,6,25]]);
+    plotly_pie.draw();
+
+pre
+    code.block.javascript.
+        var plotly_pie = new Subtle.PlotlyObject("plotly_pie", {});
+        plotly_pie.add_piechart([["Alpha", "Beta", "Gamma", "Delta"], [7,5,6,8]]);
+        plotly_pie.add_piechart([["A", "B", "C", "D"], [3,7,8,8]]);
+        plotly_pie.add_piechart([["X", "Y", "Z", "W"], [6,6,6,25]]);
+        plotly_pie.draw();
+
+table.params-table
+    tr
+        td param
+        td type
+        td default
+        td description
+    tr
+        td name
+        td String
+        td ""
+        td Series name (used for the legend)
+    tr
+        td color
+        td String (from Subtle.COLORS, hex or rgb)
+        td COLORS['primary']
+        td Plot color
+    tr
+        td donut
+        td Boolean
+        td false
+        td Display as a donut
+    tr
+        td show_labels
+        td Boolean
+        td true
+        td Show labels on the plot
+    tr
+        td zindex
+        td Number
+        td 0
+        td Index to place the plot above or below other traces

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Subtleframework Sample 2</title>
+
+    <script src='https://unpkg.com/@popperjs/core@2'></script>
+    <script src='https://unpkg.com/tippy.js@6'></script>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+
+    <script type="text/javascript" src="../dist/js/subtleframe.js"></script>
+    <link rel="stylesheet" href="../dist/css/subtleframe.css"/>
+
+  </head>
+  <body>
+
+
+
+
+    <div style="position: fixed; bottom:0; top:0; left:0; right:0" id="map_view">
+    </div>
+
+    <div class="grid_layout">
+      <div class="gpanel" style="grid-area:9 / 1 / 13 / 13; background-color: white; z-index: 99">
+        <div class="h_layout" style="padding: 10px">
+          <div id="a1"></div>
+          <div id="a2"></div>
+          <div id="a3"></div>
+          <div id="a4"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var mymap = new Subtle.MapView("map_view", {'provider': 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'})
+      mymap.update_marker("buenos_aires", {icon:"<i class='icon-pin'></i>", position: [-34.603722, -58.381592], tooltip: "Buenos Aires", icon_top: 24, icon_left: 12});
+      mymap.update_marker("amsterdam", {icon:"<i class='icon-pin'></i>", position: [52.370216, 4.895168], tooltip: "Amsterdam", icon_top: 24, icon_left: 12});
+      mymap.update_marker("new_york", {icon:"<i class='icon-pin'></i>", position: [40.7127, -74.0059], tooltip: "New York", icon_top: 24, icon_left: 12});
+
+      var gauge1 = new Subtle.Gauge("a1", {limit_high: 0.8, limit_low: 0.2});
+      var gauge2 = new Subtle.Gauge("a2", {show_hand: true, linecap: "butt"});
+      var gauge3 = new Subtle.Gauge("a3", {opening_angle: 0.3, units:"km/h", show_hand: false, inner_padding: 3});
+      var gauge4 = new Subtle.Gauge("a4", {opening_angle: 1, show_hand: false, dial_offset:3.1415, units:"PSI", linecap: "butt"});
+
+      gauge1.update(0.1);
+      gauge2.update(0.5);
+      gauge3.update(0.9);
+      gauge4.update(0.35);
+    </script>
+
+  </body>
+</html>

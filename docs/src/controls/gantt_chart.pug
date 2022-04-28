@@ -1,0 +1,119 @@
+h3#gantt_chart Gantt Chart
+
+p 
+    | Use 
+    code Subtle.GanttChart(object, params)
+    |  to display a gantt chart
+
+//
+h4 Example
+
+div.v_layout(style="height:150px")
+    div#gantt(style="max-width:500px")
+
+script.
+    var gantt = new Subtle.GanttChart("gantt",{labels:["A","B","C"], show_status_on_label: true, left_margin: 30});
+    window.setInterval(function(){
+        gantt.update({"A":Math.random() > 0.1});
+        gantt.update({"B":Math.random() > 0.5});
+        gantt.update({"C":Math.random() > 0.8});
+    },5000);
+    
+pre 
+    code.block.javascript
+        | var gantt = new Subtle.GanttChart("gantt",
+        |    {labels:["A","B","C"], 
+        |    show_status_on_label: true, 
+        |    left_margin: 30}
+        | );
+        | 
+        | window.setInterval(function(){
+        |     gantt.update({"A":Math.random() > 0.1});
+        |     gantt.update({"B":Math.random() > 0.5});
+        |     gantt.update({"C":Math.random() > 0.8});
+        | },5000);
+
+//
+h4 Params
+
+table.params-table
+    tr
+        td param
+        td type
+        td default
+        td description
+    tr
+        td labels
+        td Array[String]
+        td ["serie1", "serie2"]
+        td Labels for the gantt series
+    tr
+        td time_unit
+        td String ("s", "m" or "h")
+        td "s"
+        td Time unit (seconds, minutes or hours)
+    tr
+        td time_span
+        td Number
+        td 100
+        td Time span
+    tr
+        td time_grid
+        td Number
+        td 5
+        td Number of time divisions
+    tr
+        td show_labels
+        td Boolean
+        td true
+        td Show the labels for the series on the left
+    tr
+        td show_time_inside_bar
+        td Boolean
+        td true
+        td Show the duration of each period inside the bar of the gantt
+    tr
+        td left_margin
+        td Number
+        td 100
+        td Left margin (in pixels) for the labels
+    tr
+        td smooth
+        td Boolean
+        td true
+        td Updates the chart automatically so it looks smooth
+    tr
+        td color
+        td String or Array[String]
+        td COLORS['primary']
+        td Main color. If it's a single string, all bars will have the same color. If it's an array, each bar will have the corresponding color.
+    tr
+        td bar_size
+        td Number (0 to 1)
+        td 0.9
+        td Bar size from 0 (no space in between bars) to 1 (bars of height "0")
+    tr
+        td bar_round
+        td Number (0 to 1)
+        td 0.25
+        td Makes the bars' corners round (with 0 for totally round bars and 1 for square bars)
+    
+        
+//
+h4 Update
+
+p.
+    The GanttChart starts drawing a bar whenever a value for a given series changes from false to true,
+    and stops drawing the bar when the value returns to false.
+
+    Call the update method with an object {serie: value} to update the control. You do not need to
+    include all series, only the ones you want to update.
+
+code
+    | Subtle.GanttChart.update({"serie1" : value, "serie2" : value, ...}, time = "")
+
+p.
+    Here the time can be specified as an ISO string (YYYY-MM-DD HH:MM:SS) or as a javascript Date
+    (the default value, an empty string, means that the value passed corresponds to the present time).
+
+

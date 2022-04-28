@@ -1,0 +1,128 @@
+h3#fillbar FillBar
+
+p 
+    | Use 
+    code Subtle.Fillbar(object, params)
+    |  to display vertical or horizontal bar
+
+//
+h4 Example
+
+div.h_layout(style="height:150px")
+    div#fillbar1(style="max-width:200px")
+    div#fillbar2(style="max-width:200px")
+    div#fillbar3(style="max-width:200px")
+    div#fillbar4(style="max-width:200px")
+    div#fillbar5(style="max-width:200px")
+
+script.
+    var fillbar1 = new Subtle.FillBar("fillbar1", {});
+    var fillbar2 = new Subtle.FillBar("fillbar2", {vertical:true});
+    var fillbar3 = new Subtle.FillBar("fillbar3", {vertical:true, smooth: true});
+    var fillbar4 = new Subtle.FillBar("fillbar4", {units:" %", max_val:100, min_val: 0});
+    var fillbar5 = new Subtle.FillBar("fillbar5", {vertical: true, show_label: false});
+    
+    fillbar1.update(0.3);
+    fillbar4.update(45);
+    fillbar5.update(0.5);
+    window.setInterval(function(){
+        let x = Math.random()/4+0.5;
+        fillbar2.update(x);
+        fillbar3.update(x);
+    },250);
+    
+pre 
+    code.block.javascript
+        | var fillbar1 = new Subtle.FillBar("fillbar1", {});
+        | var fillbar2 = new Subtle.FillBar("fillbar2", {vertical:true});
+        | var fillbar3 = new Subtle.FillBar("fillbar3", {vertical:true, smooth: true});
+        | var fillbar4 = new Subtle.FillBar("fillbar4", {units:" %", max_val:100, min_val: 0});
+        | var fillbar5 = new Subtle.FillBar("fillbar5", {vertical: true, show_label: false});
+        |
+        | fillbar1.update(0.3);
+        | fillbar4.update(45);
+        | fillbar5.update(0.5);
+        | window.setInterval(function(){
+        |     let x = Math.random()/4+0.5;
+        |     fillbar2.update(x);
+        |     fillbar3.update(x);
+        | },250);
+
+//
+h4 Params
+
+p The historic gauge is derived from the normal gauge, and thus has all it's params, with differences on the following:
+
+table.params-table
+    tr
+        td param
+        td type
+        td default
+        td description
+    tr
+        td max_val
+        td Number
+        td 1
+        td Maximum value
+    tr
+        td min_val
+        td Number
+        td 0
+        td Minimum value
+    tr
+        td vertical
+        td Boolean
+        td false
+        td Make the bar vertical (true) or horizontal (false)
+    tr
+        td color
+        td String (from Subtle.COLORS, hex or rgb)
+        td COLORS['primary']
+        td Main color
+    tr
+        td smooth
+        td Boolean
+        td false
+        td Makes a smooth transition between updates
+    tr
+        td border_radius
+        td Number
+        td 10
+        td Bar's border radius (in pixels)
+    tr
+        td bar_width
+        td Number
+        td 30
+        td Bar's width (in pixels)
+    tr
+        td font_size
+        td Number
+        td 15
+        td Label's font size
+    tr
+        td show_label
+        td Boolean
+        td true
+        td Shows a label with the value inside the bar
+    tr
+        td units
+        td String
+        td ""
+        td Shows units on the label
+    tr
+        td rounding
+        td Number
+        td 2
+        td Decimal place for rounding
+
+
+//
+h4 Update
+
+p.
+    Call the update method with the new value to update the control
+
+code
+    | Subtle.Fillbar.update(value)
+
+

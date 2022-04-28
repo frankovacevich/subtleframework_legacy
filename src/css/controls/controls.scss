@@ -1,0 +1,185 @@
+// =============================================================================
+// TEXT BADGE
+// =============================================================================
+
+.two-item-flex{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-family: "at_font";
+}
+
+.tx_badge{
+  padding:5px 10px;
+  text-align:center;
+  border-radius:6px;
+}
+
+// =============================================================================
+// FILLBAR
+// =============================================================================
+.fillbar_parent{ position:relative; width: 100%; height: 100%; font-family: "at_font"; color: #fff }
+.fillbar{ width:100%; background-color:#00000099; transform:translateY(-50%); position:absolute; top:50%;  text-align: center; }
+.fillbar_v{ height:100%; background-color:#00000099; transform:translateX(-50%); position:absolute; left:50%; bottom: 0; text-align: center; }
+
+// =============================================================================
+// SVG VIEW
+// =============================================================================
+
+.svg_view_container{
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "at_font";
+}
+
+.svg_view_container.stretch{
+  svg{
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
+// =============================================================================
+// LOGGER
+// =============================================================================
+table.logger{
+  margin-top:15px;
+  font-family: "at_font";
+	td{
+		height: 100%;
+		vertical-align: top;
+		display: table-cell;
+		padding: 0;
+		position: relative;
+	}
+	.logger-stem{
+		width: 3px;
+		position: absolute;
+		top:0;
+		bottom:0;
+		left: 50%;
+		transform: translateX(-50%);
+		margin-top: -15px;
+		margin-bottom: -15px;
+	}
+	.logger-item{
+		width:20px;
+		height:20px;
+		border-radius:100%;
+    border: 2px solid #00000088;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 1;
+    box-sizing: content-box;
+	}
+	/*.tl-milestone:hover, .tl-milestone.hover {
+		box-shadow: 0 0 0 .2rem rgba( $main_color, .5 );
+	}*/
+}
+
+// =============================================================================
+// COUNTER
+// =============================================================================
+.counter-button{
+  @extend .no-selectable;
+
+  cursor:pointer;
+  vertical-align:middle;
+  text-align:center;
+  display:inline-block;
+  width:24px;
+  height:24px;
+  font-weight:bold;
+  line-height:22px;
+  border-radius: 12px;
+  background-color: $color_primary;
+  color:#fff;
+}
+
+// =============================================================================
+// TABS
+// =============================================================================
+
+.tab-item{
+  cursor:pointer;
+  padding: 10px;
+  display: flex;
+  text-align:center;
+}
+
+.tab-item:hover{
+  background-color: rgba(0,0,0,0.5);
+}
+
+.tabs_layout_container i{
+  vertical-align: middle;
+}
+
+.tabs_layout_container div{
+  box-sizing: content-box !important;
+}
+
+// =============================================================================
+// TREE VIEW
+// =============================================================================
+
+.tree-node{
+  @extend .no-selectable;
+
+  width:100%;
+  background-color: transparent;
+  color: black;
+  padding: 5px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.tree-node:hover{
+  background-color: #bfdeff;
+}
+
+.tree-node i{
+  font-size: 12px;
+  color: #4d4d4d;
+  padding-right: 5px;
+}
+
+.tree-node.selected{
+  background-color: #007BFF;
+  color: white;
+}
+
+.tree-node{
+  .tree_arrow{
+    padding-right: 5px;
+    cursor: pointer;
+  }
+}
+
+
+// =============================================================================
+// SUBTLETABLE
+// =============================================================================
+.subtletable{
+  width: 100%;
+  table-layout: fixed;
+  text-align: left;
+  border-collapse: collapse;
+
+  td{ padding: 10px; border: none; overflow-x: hidden; text-overflow: ellipsis;}
+  tr{ border: none; }
+  tr:nth-child(2n){ background-color: #00000033; }
+  tr:first-child{ font-weight: bold; }
+  td:first-child{ font-weight: bold; }
+
+  svg{ vertical-align: baseline; }
+}

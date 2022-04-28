@@ -1,0 +1,201 @@
+html
+    head
+        include head/head.pug
+
+    body
+        include head/toc.pug
+
+        h2#colors Colors
+
+        p.
+            Subtleframe provides a way to change the main colors of the web app through javascript. Other
+            colors can be changed overriding the css styles.
+
+            It's best if you set the colors you'll be using on javascript before you create any control.
+            If you change colors on runtime in your application, remember to update your controls to see
+            the effects.
+
+        h3 Dark and light mode
+
+        p
+            | The main colors used are stored on two javascript objects:
+            code Subtle.LIGHT_MODE
+            |  and
+            code Subtle.DARK_MODE
+            | . By default, Subtleframe uses the colors on the light mode, but you can switch to dark mode with the function:
+
+        code Subtle.SET_COLOR_MODE(mode = "dark")
+
+        p.
+            Remember to call this function on the first part of your script for best performance.
+
+        h3 Main colors
+
+        p
+            | Inside the
+            code Subtle.LIGHT_MODE
+            |  and
+            code Subtle.DARK_MODE
+            |  javascript objects, the following colors are defined:
+
+        table.params-table
+            tr
+                td key
+                td Light Mode
+                td Dark Mode
+            tr
+                td primary
+                td
+                    a.color(style="background-color:#5bbadc; color: black;") #5bbadc
+                td
+                    a.color(style="background-color:#5bbadc; color: black;") #5bbadc
+            tr
+                td background
+                td
+                    a.color(style="background-color:#ffffff; color: black;") #ffffff
+                td
+                    a.color(style="background-color:#121212") #121212
+            tr
+                td text
+                td
+                    a.color(style="background-color:#000000") #000000
+                td
+                    a.color(style="background-color:#ffffff; color: black") #ffffff
+            tr
+                td contrast
+                td
+                    a.color(style="background-color:#ffffff; color: black") #ffffff
+                td
+                    a.color(style="background-color:#ffffff; color: black") #ffffff
+            tr
+                td control
+                td
+                    a.color(style="background-color:#00000088") #00000088
+                td
+                    a.color(style="background-color:#00000088") #00000088
+            tr
+                td inactive
+                td
+                    a.color(style="background-color:#808080") #808080
+                td
+                    a.color(style="background-color:#808080") #808080
+            tr
+                td ok
+                td
+                    a.color(style="background-color:#73d216") #73d216
+                td
+                    a.color(style="background-color:#73d216") #73d216
+            tr
+                td info
+                td
+                    a.color(style="background-color:#0088e8") #0088e8
+                td
+                    a.color(style="background-color:#0088e8") #0088e8
+            tr
+                td warning
+                td
+                    a.color(style="background-color:#fbb901") #fbb901
+                td
+                    a.color(style="background-color:#fbb901") #fbb901
+            tr
+                td error
+                td
+                    a.color(style="background-color:#dc0000") #dc0000
+                td
+                    a.color(style="background-color:#ff2424") #ff2424
+
+        p
+            | You can use
+            code Subtle.SET_COLOR(color, key = "primary")
+            |  to edit a color.
+
+        h3 Color palettes
+
+        p.
+            In addition to main colors, there are six predefined color palettes defined in Subtleframe to use on charts
+            or controls that require many colors:
+
+        table.params-table
+            tr
+                td(style="width:100px") Palette name
+                td Colors
+            tr
+                td(style="width:100px") main
+                td
+                    a.color(style="background-color:#5bbadc; color: black") #5bbadc
+                    a.color(style="background-color:#3d5afe; color: black") #3d5afe
+                    a.color(style="background-color:#00e676; color: black") #00e676
+                    a.color(style="background-color:#76ff03; color: black") #76ff03
+                    a.color(style="background-color:#c6ff00; color: black") #c6ff00
+                    a.color(style="background-color:#ffc400; color: black") #ffc400
+                    a.color(style="background-color:#ff3d00; color: black") #ff3d00
+                    a.color(style="background-color:#f50057; color: black") #f50057
+                    a.color(style="background-color:#d500f9; color: black") #d500f9
+                    a.color(style="background-color:#1de9b6; color: black") #1de9b6
+            tr
+                td(style="width:100px") alternative
+                td
+                    a.color(style="background-color:#d90d39") #d90d39
+                    a.color(style="background-color:#f8432d") #f8432d
+                    a.color(style="background-color:#ff8e25") #ff8e25
+                    a.color(style="background-color:#ef55f1") #ef55f1
+                    a.color(style="background-color:#c543fa") #c543fa
+                    a.color(style="background-color:#6324f5") #6324f5
+                    a.color(style="background-color:#2e21ea") #2e21ea
+                    a.color(style="background-color:#3d719a") #3d719a
+                    a.color(style="background-color:#31ac28") #31ac28
+                    a.color(style="background-color:#96d310") #96d310
+            tr
+                td(style="width:100px") creamy
+                td
+                    a.color(style="background-color:#ea989d; color: black") #ea989d
+                    a.color(style="background-color:#b9d7f7; color: black") #b9d7f7
+                    a.color(style="background-color:#c6bcdd; color: black") #c6bcdd
+                    a.color(style="background-color:#9bfdce; color: black") #9bfdce
+                    a.color(style="background-color:#bee8bb; color: black") #bee8bb
+                    a.color(style="background-color:#f9f2c0; color: black") #f9f2c0
+                    a.color(style="background-color:#5f8c96; color: black") #5f8c96
+                    a.color(style="background-color:#9b91ac; color: black") #9b91ac
+                    a.color(style="background-color:#ae896f; color: black") #ae896f
+                    a.color(style="background-color:#cc6d55; color: black") #cc6d55
+            tr
+                td(style="width:100px") contrast
+                td
+                    a.color(style="background-color:#8ae234; color: black") #8ae234
+                    a.color(style="background-color:#fcaf3e; color: black") #fcaf3e
+                    a.color(style="background-color:#729fcf; color: black") #729fcf
+                    a.color(style="background-color:#ad7fa8; color: black") #ad7fa8
+                    a.color(style="background-color:#ef2929; color: black") #ef2929
+                    a.color(style="background-color:#4e9a06") #4e9a06
+                    a.color(style="background-color:#ce5c00") #ce5c00
+                    a.color(style="background-color:#204a87") #204a87
+                    a.color(style="background-color:#5c3566") #5c3566
+                    a.color(style="background-color:#a40000") #a40000
+            tr
+                td(style="width:100px") soft
+                td
+                    a.color(style="background-color:#ef9a9a; color: black") #ef9a9a
+                    a.color(style="background-color:#ce93d8; color: black") #ce93d8
+                    a.color(style="background-color:#b39ddb; color: black") #b39ddb
+                    a.color(style="background-color:#90caf9; color: black") #90caf9
+                    a.color(style="background-color:#80cbc4; color: black") #80cbc4
+                    a.color(style="background-color:#a5d6a7; color: black") #a5d6a7
+                    a.color(style="background-color:#ffe082; color: black") #ffe082
+                    a.color(style="background-color:#ffcc80; color: black") #ffcc80
+                    a.color(style="background-color:#ffab91; color: black") #ffab91
+                    a.color(style="background-color:#b0bec5; color: black") #b0bec5
+            tr
+                td(style="width:100px") accent
+                td
+                    a.color(style="background-color:#d50000") #d50000
+                    a.color(style="background-color:#c51162") #c51162
+                    a.color(style="background-color:#6200ea") #6200ea
+                    a.color(style="background-color:#2962ff") #2962ff
+                    a.color(style="background-color:#00bfa5") #00bfa5
+                    a.color(style="background-color:#00c853") #00c853
+                    a.color(style="background-color:#ffab00") #ffab00
+                    a.color(style="background-color:#ff6b00") #ff6b00
+                    a.color(style="background-color:#dd2c00") #dd2c00
+                    a.color(style="background-color:#263238") #263238
+
+        div(style="height:100px")

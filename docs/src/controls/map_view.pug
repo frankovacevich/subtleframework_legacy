@@ -1,0 +1,327 @@
+h3#map_view Map View
+
+p
+    | Use
+    code Subtle.MapView(object, params)
+    | to display a map.
+
+p.
+    The MapView utilizes the <a href="https://leafletjs.com/">leaflet.js</a> library. You can override all methods
+    presented here and use the map object directly (Subtle.MapView.map). The
+    MapView only provides an easier to use wrapper to draw markers and figures
+    on a map. See the <a href="https://leafletjs.com/">leaflet documentation</a>
+    for more.
+
+//
+h4 Examples
+
+div#mymap1(style="width:100%; height:400px")
+
+script.
+    var mymap1 = new Subtle.MapView("mymap1");
+    mymap1.update_marker("buenos_aires", {icon:"<i class='icon-pin'></i>", position: [-34.603722, -58.381592], tooltip: "Buenos Aires", icon_top: 24, icon_left: 12});
+    mymap1.update_marker("amsterdam", {icon:"<i class='icon-pin'></i>", position: [52.370216, 4.895168], tooltip: "Amsterdam", icon_top: 24, icon_left: 12});
+    mymap1.update_marker("new_york", {icon:"<i class='icon-pin'></i>", position: [40.7127, -74.0059], tooltip: "New York", icon_top: 24, icon_left: 12});
+
+pre
+    code.block.javascript.
+        var mymap = new Subtle.MapView("mymap")
+        mymap.update_marker("buenos_aires", {icon:"&lt;i class='icon-pin'&gt;&lt;/i&gt;", position: [-34.603722, -58.381592], tooltip: "Buenos Aires", icon_top: 24, icon_left: 12});
+        mymap.update_marker("amsterdam", {icon:"&lt;i class='icon-pin'&gt;&lt;/i&gt;", position: [52.370216, 4.895168], tooltip: "Amsterdam", icon_top: 24, icon_left: 12});
+        mymap.update_marker("new_york", {icon:"&lt;i class='icon-pin'&gt;&lt;/i&gt;", position: [40.7127, -74.0059], tooltip: "New York", icon_top: 24, icon_left: 12});
+
+
+div#mymap2(style="width:100%; height:400px")
+
+script.
+    var mymap2 = new Subtle.MapView("mymap2", {lat:40.78277381137337, lon:-73.96477242358108, zoom:13 });
+    mymap2.update_marker("m2_icon", {icon:"<i class='icon-car-top'></i>", position: [40.784188498795274, -73.9586093512171], tooltip: "Current vehicle location", icon_top: 12, icon_left: 12, rotation: -150});
+    let trace = [[40.76811977387323, -73.9816330849649], [40.800417243600315, -73.95795977879521], [40.796920475636476, -73.94922663845642], [40.784188498795274, -73.9586093512171]]
+    mymap2.update_trace("m2_trace", {points: trace});
+    mymap2.update_circle("m2_circle", {position: [40.784188498795274, -73.9586093512171], radius: 300});
+
+pre
+    code.block.javascript.
+        var mymap2 = new Subtle.MapView("mymap2", {lat:40.78277381137337, lon:-73.96477242358108, zoom:13 });
+        mymap2.update_marker("m2_icon", {icon:"&lt;i class='icon-car-top'>&gt;&lt;/i&gt;", position: [40.784188498795274, -73.9586093512171], tooltip: "Current vehicle location", icon_top: 12, icon_left: 12, rotation: -150});
+        let trace = [[40.76811977387323, -73.9816330849649], [40.800417243600315, -73.95795977879521], [40.796920475636476, -73.94922663845642], [40.784188498795274, -73.9586093512171]]
+        mymap2.update_trace("m2_trace", {points: trace});
+        mymap2.update_circle("m2_circle", {position: [40.784188498795274, -73.9586093512171], radius: 300});
+
+
+//
+h4 Params
+
+p The historic gauge is derived from the normal gauge, and thus has all it's params, with differences on the following:
+
+table.params-table
+    tr
+        td param
+        td type
+        td default
+        td description
+    tr
+        td lat
+        td Number
+        td 0
+        td Map initial latitude
+    tr
+        td lon
+        td Number
+        td 0
+        td Map initial longitude
+    tr
+        td zoom
+        td Number (2 to 20)
+        td 2
+        td Map initial zoom
+    tr
+        td show_layer_control
+        td Boolean
+        td false
+        td Shows an icon on the top right with a list of the different layers on your map (use in combination with marker groups, see update)
+    tr
+        td provider
+        td String
+        td 'https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png'
+        td
+            | Tile provider. See <a href='http://leaflet-extras.github.io/leaflet-providers/preview/'>this link</a> for a list of many tile providers available (some of them might have a commercial license)
+    tr
+        td leaflet_options
+        td Object
+        td
+            | { attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'}
+        td An object passed to the Leaflet constructor with different settings (see the leaflet documentation)
+    tr
+        td correct_icon_x
+        td Number
+        td 6
+        td Makes a correction to the icons in pixels for a correct positioning on the map
+    tr
+        td correct_icon_y
+        td Number
+        td 7
+        td Makes a correction to the icons in pixels for a correct positioning on the map
+
+
+//
+h4 Update
+
+p.
+    You can draw different markers and figures on the MapView with the following functions:
+
+ol
+    li
+        | Use <code>MapView.update_marker(marker_id, params)</code> to create or update a marker on the map.
+        | The marker optional params are:
+
+        table.params-table
+            tr
+                td param
+                td type
+                td default
+                td description
+            tr
+                td icon
+                td String
+                td ""
+                td An html code that defines the icon (see Subtleicons). If lefy empty it defaults to the leaflet icon. The icon sizes are by default 24x24 pixels.
+            tr
+                td group
+                td String
+                td "default"
+                td A group name. Use this in combination with the <b>show_layer_control</b> to allow the user to show/hide groups.
+            tr
+                td icon_left
+                td Number
+                td 12
+                td Defines the horizontal center of the icon (in pixels from the left)
+            tr
+                td icon_top
+                td Number
+                td 12
+                td Defines the vertical center of the icon (in pixels from the top)
+            tr
+                td rotation
+                td Number
+                td 0
+                td Angle to rotate the icon of the marker (in degrees)
+            tr
+                td visible
+                td Boolean
+                td true
+                td Shows / hides the marker
+            tr
+                td tooltip
+                td String
+                td ""
+                td Displays a tooltip when you hover on the marker (requires tippy.js and popper.js)
+            tr
+                td onclick
+                td Function()
+                td function(){}
+                td Function called when you click the marker
+        br
+    li
+        | Use <code>MapView.update_trace(marker_id, params)</code> to create or update a polyline on the map.
+        | The trace optional params are:
+
+        table.params-table
+            tr
+                td param
+                td type
+                td default
+                td description
+            tr
+                td points
+                td Array[[Lat,Lon]]
+                td []
+                td An array with the points [Lat, Lon] that define the polyline
+            tr
+                td group
+                td String
+                td "default"
+                td A group name. Use this in combination with the <b>show_layer_control</b> to allow the user to show/hide groups.
+            tr
+                td color
+                td String
+                td "#3388ff"
+                td Color of the line
+            tr
+                td width
+                td Number
+                td 2
+                td Stroke width of the line
+            tr
+                td visible
+                td Boolean
+                td true
+                td Shows / hides the trace
+            tr
+                td onclick
+                td Function()
+                td function(){}
+                td Function called when you click on the trace
+            tr
+                td onhover
+                td Function()
+                td function(){}
+                td Function called when you hover on the trace
+        br
+    li
+        | Use <code>MapView.update_cricle(marker_id, params)</code> to create or update a circle on the map.
+        | The circle optional params are:
+
+        table.params-table
+            tr
+                td param
+                td type
+                td default
+                td description
+            tr
+                td position
+                td Array[Lat,Lon]
+                td [0, 0]
+                td The position of the circle
+            tr
+                td radius
+                td Number
+                td 0
+                td Radius of the circle (in meters)
+            tr
+                td group
+                td String
+                td "default"
+                td A group name. Use this in combination with the <b>show_layer_control</b> to allow the user to show/hide groups.
+            tr
+                td color
+                td String
+                td "#3388ff"
+                td Color of the circle's filling
+            tr
+                td opacity
+                td Number (0 to 1)
+                td 0.5
+                td Opacity of the circle's filling
+            tr
+                td border_color
+                td String
+                td "#3388ff"
+                td Color of the circle's border
+            tr
+                td border_width
+                td Number
+                td 1
+                td Stroke width of the circle's border
+            tr
+                td visible
+                td Boolean
+                td true
+                td Shows / hides the circle
+            tr
+                td onclick
+                td Function()
+                td function(){}
+                td Function called when you click on the circle
+            tr
+                td onhover
+                td Function()
+                td function(){}
+                td Function called when you hover on the circle
+
+        br
+    li
+        | Use <code>MapView.update_polygon(marker_id, params)</code> to create or update a polygon on the map.
+        | The polygon optional params are:
+
+        table.params-table
+            tr
+                td param
+                td type
+                td default
+                td description
+            tr
+                td points
+                td Array[[Lat,Lon]]
+                td []
+                td An array with the points [Lat, Lon] that define the polyline
+            tr
+                td group
+                td String
+                td "default"
+                td A group name. Use this in combination with the <b>show_layer_control</b> to allow the user to show/hide groups.
+            tr
+                td color
+                td String
+                td "#3388ff"
+                td Color of the polygon's filling
+            tr
+                td opacity
+                td Number (0 to 1)
+                td 0.5
+                td Opacity of the polygon's filling
+            tr
+                td border_color
+                td String
+                td "#3388ff"
+                td Color of the polygon's border
+            tr
+                td border_width
+                td Number
+                td 1
+                td Stroke width of the polygon's border
+            tr
+                td visible
+                td Boolean
+                td true
+                td Shows / hides the polygon
+            tr
+                td onclick
+                td Function()
+                td function(){}
+                td Function called when you click on the polygon
+            tr
+                td onhover
+                td Function()
+                td function(){}
+                td Function called when you hover on the polygon

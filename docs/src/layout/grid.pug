@@ -1,0 +1,40 @@
+h3#grid Grid
+
+p.
+    The simplest way to create a layout for a full screen dashboard is with the help of a grid. Subtleframe includes a CSS Class called
+    <code>grid</code> that uses the property <code>display: grid</code>. Grids are 12x12 arrangements. You can place a div inside a grid
+    setting the <code>grid-area</code> CSS property. See the following example:
+
+h4 Example
+
+div.grid_layout
+    div(style="grid-area: 1 / 1 / 5 / 5; background-color: rgba(0,0,0,0.1); text-align: center;")
+        p 1 / 1 / 5 / 5
+    div(style="grid-area: 5 / 1 / 13 / 5; background-color: rgba(0,0,0,0.1); text-align: center;")
+        p 5 / 1 / 13 / 5
+    div(style="grid-area: 1 / 9 / 13 / 13; background-color: rgba(0,0,0,0.1); text-align: center;")
+        p 1 / 9 / 13 / 13
+
+pre
+    code.block.css
+        | &lt;div class="grid_layout"&gt;
+        |   &lt;div style="grid-area: 1 / 1 / 5 / 5; background-color: rgba(0,0,0,0.1); text-align: center;"&gt;
+        |     &lt;p&gt;1 / 1 / 5 / 5&lt;/p&gt;
+        |   &lt;/div&gt;
+        |   &lt;div style="grid-area: 5 / 1 / 13 / 5; background-color: rgba(0,0,0,0.1); text-align: center;"&gt;
+        |     &lt;p&gt;5 / 1 / 13 / 5&lt;/p&gt;
+        |   &lt;/div&gt;
+        |   &lt;div style="grid-area: 1 / 9 / 13 / 13; background-color: rgba(0,0,0,0.1); text-align: center;"&gt;
+        |      &lt;p&gt;1 / 9 / 13 / 13&lt;/p&gt;
+        |   &lt;/div&gt;
+        | &lt;/div&gt;
+
+p.
+    The <code>grid-area</code> property places each panel by it's coordinates on the 12x12 grid (taking 1 as the first row / column and 13
+    as the last):
+
+code.
+    grid-area: first-row / first-column / last-row / last-column
+
+p.
+    To learn more about grids you can visit <a href=https://css-tricks.com/snippets/css/complete-guide-grid/)>this link</a>
